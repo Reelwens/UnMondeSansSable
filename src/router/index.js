@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home/Home'
-import Ch1S1 from '@/components/Slide/ChapterOne/1/Slide'
+import ChapterOne from '@/components/Slide/ChapterOne/ChapterOne'
 import Ch1S2 from '@/components/Slide/ChapterOne/2/Slide'
 
 Vue.use(Router)
@@ -14,9 +14,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/ChapterOne/1',
-      name: 'ChapterOneSOne',
-      component: Ch1S1
+      path: '/ChapterOne',
+      name: 'ChapterOne',
+      component: ChapterOne
     },
     {
       path: '/ChapterOne/2',
