@@ -1,7 +1,16 @@
 <style scoped lang="scss" src="./ChapterOne.scss"></style>
+<style scoped src="./hamburger.min.css"></style>
 
 <template>
   <div class="slide-container">
+    <header class="header-container">
+      <div class="logo-container">
+        <a class="logo-link" href="#"><span class="big">2050</span> : Pénurie de sable</a>
+      </div>
+      <div class="sound-container">
+        <button class="sound-button"><img src="../../../assets/images/icons/sound.svg" alt="Sound button"></button>
+      </div>
+    </header>
     <div class="slides-container" v-bind:data-slide="slide_index">
       <div class="slides slide-1">
         <div class="slide-content-container">
@@ -46,9 +55,40 @@
       </div>
       <div class="footer-links">
         <div class="footer-links-container" v-bind:data-slide="slide_index">
-          <div class="footer-link footer-link-1">
+          <div class="footer-link footer-link-1" @click="change_slide(0)">
             <div class="footer-link-inner">
             </div>
+          </div>
+          <div class="footer-link footer-link-2" @click="change_slide(1)">
+            <div class="footer-link-inner">
+            </div>
+          </div>
+          <div class="footer-link footer-link-3" @click="change_slide(2)">
+            <div class="footer-link-inner">
+            </div>
+          </div>
+          <div class="footer-link footer-link-4" @click="change_slide(3)">
+            <div class="footer-link-inner">
+            </div>
+          </div>
+          <div class="footer-link footer-link-5" @click="change_slide(4)">
+            <div class="footer-link-inner">
+            </div>
+          </div>
+          <div class="footer-link footer-link-6" @click="change_slide(5)">
+            <div class="footer-link-inner">
+            </div>
+          </div>
+          <div class="footer-link footer-link-7" @click="change_slide(6)">
+            <div class="footer-link-inner">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-menu">
+        <div class="hamburger hamburger--slider" @click="change_menu" v-bind:class="is_active">
+          <div class="hamburger-box">
+            <div class="hamburger-inner hamburger--slider"></div>
           </div>
         </div>
       </div>
@@ -63,7 +103,8 @@ export default {
     return {
       scrolling : true,
       animation : '',
-      slide_index : 0
+      slide_index : 0,
+      is_active : ''
     }
   },
   created() {
@@ -119,6 +160,16 @@ export default {
         this.scrolling = false
 
       },1000)
+    },
+    change_slide(index) {
+      this.slide_index = index
+    },
+    change_menu() {
+      if(this.is_active === ''){
+        this.is_active = 'is-active'
+      } else{
+        this.is_active = ''
+      }
     }
   }
 }
