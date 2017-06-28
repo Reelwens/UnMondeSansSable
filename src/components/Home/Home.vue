@@ -64,12 +64,12 @@
       <div @click="next_slide" class="nav-button-right nav-button"><img src="../../assets/images/icons/arrow-right.svg" alt="Arrow right"></div>
       <div @click="previous_slide" class="nav-button-left nav-button"><img src="../../assets/images/icons/arrow-left.svg" alt="Arrow left"></div>
 
-      <div class="backgrounds-container">
+      <div class="backgrounds-container" v-bind:data-slide="slide_index">
         <video autoplay loop class="background background-1" src="/static/videos/home/chapter.mp4">Le desert de Dubaï</video>
-        <img class="background background-2" src="../../assets/images/home/background-2.jpg">
-        <img class="background background-3" src="../../assets/images/home/background-3.jpg">
-        <img class="background background-4" src="../../assets/images/home/background-4.jpg">
-        <img class="background background-5" src="../../assets/images/home/background-5.jpg">
+        <video autoplay loop class="background background-2" src="/static/videos/home/chapter.mp4">Le desert de Dubaï</video>
+        <video autoplay loop class="background background-3" src="/static/videos/home/chapter.mp4">Le desert de Dubaï</video>
+        <video autoplay loop class="background background-4" src="/static/videos/home/chapter.mp4">Le desert de Dubaï</video>
+        <video autoplay loop class="background background-5" src="/static/videos/home/chapter.mp4">Le desert de Dubaï</video>
         <div class="background-black-overlay"></div>
       </div>
       
