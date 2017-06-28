@@ -279,6 +279,7 @@ body
 					transform: translateX(0vw);
 					opacity: 0;
 					transition: opacity 0.3s ease-in-out;
+					will-change: opacity;
 				}
 			}
 

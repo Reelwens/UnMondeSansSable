@@ -65,11 +65,11 @@
       <div @click="previous_slide" class="nav-button-left nav-button"><img src="../../assets/images/icons/arrow-left.svg" alt="Arrow left"></div>
 
       <div class="backgrounds-container" v-bind:data-slide="slide_index">
-        <video autoplay loop class="background background-1" src="/static/videos/home/chapter.mp4">Le desert de Dubaï</video>
-        <video autoplay loop class="background background-2" src="/static/videos/home/chapter.mp4">Le desert de Dubaï</video>
-        <video autoplay loop class="background background-3" src="/static/videos/home/chapter.mp4">Le desert de Dubaï</video>
-        <video autoplay loop class="background background-4" src="/static/videos/home/chapter.mp4">Le desert de Dubaï</video>
-        <video autoplay loop class="background background-5" src="/static/videos/home/chapter.mp4">Le desert de Dubaï</video>
+        <video autoplay loop class="background background-1" src="/static/videos/chapter-1.mp4">Le desert de Dubaï</video>
+        <video autoplay loop class="background background-2" src="/static/videos/chapter-2.mp4">Le desert de Dubaï</video>
+        <video autoplay loop class="background background-3" src="/static/videos/chapter-1.mp4">Le desert de Dubaï</video>
+        <video autoplay loop class="background background-4" src="/static/videos/chapter-1.mp4">Le desert de Dubaï</video>
+        <video autoplay loop class="background background-5" src="/static/videos/chapter-1.mp4">Le desert de Dubaï</video>
         <div class="background-black-overlay"></div>
       </div>
       
