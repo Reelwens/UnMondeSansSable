@@ -5,9 +5,39 @@
     <div class="slides-container">
       <div class="slides slide-1">
         <div class="slide-content-container">
-          <video src="../../../../static/videos/home/chapter.mp4" autoplay poster="../../../assets/images/home/background-1.jpg">
+          <video src="../../../../static/videos/chapter-1.mp4" autoplay poster="../../../assets/images/home/background-1.jpg">
 
           </video>
+        </div>
+      </div>
+      <div class="slides slide-2">
+        <div class="slide-content-container">
+          
+        </div>
+      </div>
+      <div class="slides slide-3">
+        <div class="slide-content-container">
+          
+        </div>
+      </div>
+      <div class="slides slide-4">
+        <div class="slide-content-container">
+          
+        </div>
+      </div>
+      <div class="slides slide-5">
+        <div class="slide-content-container">
+          
+        </div>
+      </div>
+      <div class="slides slide-6">
+        <div class="slide-content-container">
+          
+        </div>
+      </div>
+      <div class="slides slide-7">
+        <div class="slide-content-container">
+          
         </div>
       </div>
     </div>
