@@ -2,7 +2,7 @@
 
 <template>
   <div v-bind:class="{'change-page': change_page}" class="home-container">
-    
+
     <header class="header-container">
       <div class="logo-container">
         <a class="logo-link" href="#"><span class="big">2050</span> : Pénurie de sable</a>
@@ -71,8 +71,7 @@
         <video autoplay loop class="background background-4" src="/static/videos/chapter-1.mp4">Le desert de Dubaï</video>
         <video autoplay loop class="background background-5" src="/static/videos/chapter-1.mp4">Le desert de Dubaï</video>
         <div class="background-black-overlay"></div>
-      </div>
-      
+      </div>      
       <a class="discover-button main-button" href="#">Découvrir</a>
     </div>
 
@@ -128,7 +127,8 @@ export default {
     return {
       slide_index: 0,
       change_page: false,
-      scroll_allowed: true
+      scroll_allowed: true,
+      pages: ['ChapterOne','ChapterTwo','ChapterThree','ChapterFour','ChapterFive']
     }
   },
 
@@ -170,6 +170,10 @@ export default {
       if (this.scroll_allowed == true) {
         this.change_page = true
         this.scroll_allowed = false
+        let _this = this
+        window.setTimeout( () => {
+          _this.$router.push(_this.pages[_this.slide_index])
+        }, 600)
       }
     }
 
