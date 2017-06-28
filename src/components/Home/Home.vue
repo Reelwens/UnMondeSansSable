@@ -14,46 +14,46 @@
 
     <div class="slider-container" v-bind:data-slide="slide_index">
       <div class="slides-container">
-        <div class="slide slide-1">
+        <div class="slide slide-1" @click="change_the_page">
           <div class="slide-content-container">
             <img class="slide-background" src="../../assets/images/home/background-1.jpg">
-            <p class="slide-chapter-number">Chapter 01</p>
+            <p class="slide-chapter-number">Chapitre 01</p>
             <div class="slide-text-separator"></div>
             <h2 class="slide-text-title">Souvenirs</h2>
             <p class="slide-text-subtitle">Le sable : une ressource inestimable</p>
           </div>
         </div>
-        <div class="slide slide-2">
+        <div class="slide slide-2" @click="change_the_page">
           <div class="slide-content-container">
             <img class="slide-background" src="../../assets/images/home/background-2.jpg">
-            <p class="slide-chapter-number">Chapter 02</p>
+            <p class="slide-chapter-number">Chapitre 02</p>
             <div class="slide-text-separator"></div>
             <h2 class="slide-text-title">Inconscience</h2>
             <p class="slide-text-subtitle">Une ressource non-renouvable mais surexploité</p>
           </div>
         </div>
-        <div class="slide slide-3">
+        <div class="slide slide-3" @click="change_the_page">
           <div class="slide-content-container">
             <img class="slide-background" src="../../assets/images/home/background-3.jpg">
-            <p class="slide-chapter-number">Chapter 03</p>
+            <p class="slide-chapter-number">Chapitre 03</p>
             <div class="slide-text-separator"></div>
             <h2 class="slide-text-title">Folie</h2>
             <p class="slide-text-subtitle">Des usages pharaoniques</p>
           </div>
         </div>
-        <div class="slide slide-4">
+        <div class="slide slide-4" @click="change_the_page">
           <div class="slide-content-container">
             <img class="slide-background" src="../../assets/images/home/background-4.jpg">
-            <p class="slide-chapter-number">Chapter 04</p>
+            <p class="slide-chapter-number">Chapitre 04</p>
             <div class="slide-text-separator"></div>
             <h2 class="slide-text-title">Dérive</h2>
             <p class="slide-text-subtitle">L'exploitation clandestine</p>
           </div>
         </div>
-        <div class="slide slide-5">
+        <div class="slide slide-5" @click="change_the_page">
           <div class="slide-content-container">
             <img class="slide-background" src="../../assets/images/home/background-5.jpg">
-            <p class="slide-chapter-number">Chapter 05</p>
+            <p class="slide-chapter-number">Chapitre 05</p>
             <div class="slide-text-separator"></div>
             <h2 class="slide-text-title">Espoir</h2>
             <p class="slide-text-subtitle">Perspectives d'avenir</p>
@@ -67,13 +67,13 @@
       <div class="backgrounds-container" v-bind:data-slide="slide_index">
         <video autoplay loop class="background background-1" src="/static/videos/chapter-1.mp4">Le desert de Dubaï</video>
         <video autoplay loop class="background background-2" src="/static/videos/chapter-2.mp4">Le desert de Dubaï</video>
-        <video autoplay loop class="background background-3" src="/static/videos/chapter-1.mp4">Le desert de Dubaï</video>
-        <video autoplay loop class="background background-4" src="/static/videos/chapter-1.mp4">Le desert de Dubaï</video>
-        <video autoplay loop class="background background-5" src="/static/videos/chapter-1.mp4">Le desert de Dubaï</video>
+        <video autoplay loop class="background background-3" src="/static/videos/chapter-3.mp4">Le desert de Dubaï</video>
+        <video autoplay loop class="background background-4" src="/static/videos/chapter-4.mp4">Le desert de Dubaï</video>
+        <video autoplay loop class="background background-5" src="/static/videos/chapter-5.mp4">Le desert de Dubaï</video>
         <div class="background-black-overlay"></div>
       </div>
 
-      <a class="discover-button main-button" href="#">Discover</a>
+      <a class="discover-button main-button" href="#">Découvrir</a>
     </div>
 
     <div class="navbar-container" v-bind:data-slide="slide_index">
