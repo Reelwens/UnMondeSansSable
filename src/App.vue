@@ -8,7 +8,11 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  loader: 'vue-loader',
+  options: {
+    html: 'attrs=video:src img:src'
+  }
 }
 </script>
 

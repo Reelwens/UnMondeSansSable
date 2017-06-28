@@ -45,6 +45,14 @@ module.exports = {
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
       },
+       {
+        test: /\.(mp4|mpe?g|ogg|wav|webm|wmv|avi|swf)(\?.*)?$/,
+          loader: 'url-loader',
+          options: {
+            limit: 1000000,
+            name: utils.assetsPath('media/[name].[hash:7].[ext]')
+          }
+      },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
