@@ -479,6 +479,77 @@ body
 			}
 		}
 	}
+
+	.loader-container
+    {
+    	z-index: 100;
+    	position: fixed;
+    	top: 0;
+    	left: 0;
+    	background: black;
+    	color: white;
+    	text-align: center;
+    	vertical-align: middle;
+    	width: 100vw;
+    	height: 100vh;
+    	line-height: 100vh;
+    	opacity: 1;
+    	transition: all 0.3s ease-in-out;
+    	will-change: transform;
+
+    	p
+    	{
+    		font-size: 20px;
+    		color: $yellow;
+    	}
+    }
+
+    .trailer-container
+    {
+    	z-index: 50;
+    	position: fixed;
+    	top: 0;
+    	left: 0;
+    	width: 100vw;
+    	height: 100vh;
+    	background: black;
+    	transition: all 0.3s ease-in-out;
+    	will-change: transform;
+
+    	video
+    	{
+    		width: 100%;
+			vertical-align: middle;
+    	}
+
+    	.skip-intro
+    	{
+    		position: absolute;
+    		bottom: 50px;
+    		left: 50%;
+    		transform: translateX(-50%);
+    		color: white;
+    		font-family: $main-font;
+    		font-weight: 700;
+    		opacity: 0.5;
+    		cursor: pointer;
+    	}
+
+    	.skip-intro:hover
+    	{
+    		opacity: 1;
+    	}
+    }
+}
+
+.home-container.trailer-up
+{
+	.loader-container{opacity: 0; transform: translateY(100vh);}
+}
+
+.home-container.trailer-done
+{
+	.trailer-container{opacity: 0; transform: translateY(100vh);}
 }
 
 .home-container.change-page

@@ -1,7 +1,16 @@
 <style scoped lang="scss" src="./Home.scss"></style>
 
 <template>
-  <div v-bind:class="{'change-page': change_page}" class="home-container">
+  <div v-bind:class="[{'change-page': change_page}, {'trailer-up': trailer_up}, {'trailer-done': trailer_done}]" class="home-container">
+
+    <div class="loader-container">
+      <p>Loading...</p>
+    </div>
+
+    <div class="trailer-container">
+      <video @canplay="hide_loader" @ended="hide_trailer" autoplay src="/static/videos/intro.mp4">Trailer de "2050 : Penurie de sable"</video>
+      <p @click="hide_trailer" class="skip-intro">Passer l'introduction</p>
+    </div>
 
     <header class="header-container">
       <div class="logo-container">
@@ -71,12 +80,8 @@
         <video autoplay loop class="background background-4" src="/static/videos/chapter-4.mp4">Le desert de Dubaï</video>
         <video autoplay loop class="background background-5" src="/static/videos/chapter-5.mp4">Le desert de Dubaï</video>
         <div class="background-black-overlay"></div>
-<<<<<<< HEAD
       </div>
 
-=======
-      </div>      
->>>>>>> 6ff5a4688f0adb22aa5e840f8ee5571ea3b93165
       <a class="discover-button main-button" href="#">Découvrir</a>
     </div>
 
@@ -132,6 +137,8 @@ export default {
     return {
       slide_index: 0,
       change_page: false,
+      trailer_up: false,
+      trailer_done: false,
       scroll_allowed: true,
       pages: ['ChapterOne','ChapterTwo','ChapterThree','ChapterFour','ChapterFive']
     }
@@ -172,7 +179,7 @@ export default {
     },
 
     change_the_page () {
-      if (this.scroll_allowed == true) {
+      if (this.scroll_allowed == true && this.trailer_done == true) {
         this.change_page = true
         this.scroll_allowed = false
         let _this = this
@@ -180,6 +187,14 @@ export default {
           _this.$router.push(_this.pages[_this.slide_index])
         }, 600)
       }
+    },
+
+    hide_loader () {
+      this.trailer_up = true
+    },
+
+    hide_trailer () {
+      this.trailer_done = true
     }
 
   }
