@@ -2,7 +2,7 @@
 <style scoped src="./hamburger.min.css"></style>
 
 <template>
-  <div class="slide-container">
+  <div class="slide-container" v-bind:class="{ 'video-ready' : video_ready }">
     <header class="header-container">
       <div class="logo-container">
         <a class="logo-link" href="#"><span class="big">2050</span> : Pénurie de sable</a>
@@ -11,17 +11,42 @@
         <button class="sound-button"><img src="../../../assets/images/icons/sound.svg" alt="Sound button"></button>
       </div>
     </header>
+    <img class="image-placeholder" src="../../../assets/images/home/background-2.jpg">
     <div class="slides-container" v-bind:data-slide="slide_index">
-      <div class="slides slide-1">
-        <div class="slide-content-container">
-          <video src="../../../../static/videos/chapter-2.mp4" autoplay loop poster="../../../assets/images/home/background-1.jpg"></video>
-        </div>
-      </div>
-      <div class="slides slide-2">
-        <div class="slide-content-container">
 
+      <div class="slides slide-1 slide-intro">
+        <div class="slide-content-container">
+        <div class="black-background"></div>
+          <div class="text-content">
+            <div class="chapter-number">II</div>
+            <div class="chapter-title">Inconscience - Une ressource non renouvelable mais surexploitée</div>
+            <div class="separator"></div>
+            <p class="text-introduction">Le sable faisait rêver car il évoquait la plage, les vacances, les îles paradisiaques, mais l'envers du décor n'était peut-être pas aussi paradisiaque qu'il n'y paraissait.<br><br> Contrairement à l’or noir, le sable était perçu comme inépuisable et fut exploité à outrance</p>
+          </div>
+          <video ref="video" @canplay="hide_placeholder" src="../../../../static/videos/chapter-2.mp4" loop></video>
         </div>
       </div>
+
+      <div class="slides slide-2 slide-quizz">
+        <div class="slide-content-container">
+          <div class="quizz-content">
+            <p class="quizz-question">Où trouve t-on le plus de sable dans le monde ?</p>
+            <div class="answers-container">
+              <div class="answer-case answer-1">Dans des carrières</div>
+              <div class="answer-case answer-2">Dans les déserts</div>
+              <div class="answer-case answer-3">Sur les plages</div>
+              <div class="answer-case answer-4">Dans les rivières</div>
+            </div>
+            <div class="answer-infos-container">
+              <p class="right-answer">Bonne réponse</p>
+              <p class="Wrong-answer">Mauvaise réponse</p>
+              <p class="answer-infos">Néanmoins le sable de désert, ne s'agrège pas et donc ne peut être utilisé pour la construction . Les promoteurs de Dubaï en ont fait les frais lorsqu'ils ont dus faire apporter du sable d’Australie alors qu’ils se trouvent au milieu du desert.</p>
+            </div>
+          </div>
+          <img class="background" src="../../../assets/images/chapter-2/slide-2.jpg">
+        </div>
+      </div>
+
       <div class="slides slide-3">
         <div class="slide-content-container">
 
@@ -86,7 +111,8 @@ export default {
       scrolling : true,
       animation : '',
       slide_index : 0,
-      is_active : ''
+      is_active : '',
+      video_ready: false
     }
   },
   created() {
@@ -108,16 +134,17 @@ export default {
       // Scrolling down
       if(lethargy.check(e) === 1 && _this.scrolling === false){
 
-        _this.slide_down()
+        _this.slide_up()
 
       } else if(lethargy.check(e) === -1 && _this.scrolling === false) {
 
-        _this.slide_up()
+        _this.slide_down()
 
       }
     })
   },
   methods: {
+
     slide_down() {
 
       if(this.slide_index != 4){
@@ -126,6 +153,7 @@ export default {
       this.scroll_control()
 
     },
+
     slide_up() {
 
       if(this.slide_index != 0){
@@ -134,6 +162,7 @@ export default {
       this.scroll_control()
 
     },
+
     scroll_control() {
       this.scrolling = true
 
@@ -141,17 +170,24 @@ export default {
 
         this.scrolling = false
 
-      },1000)
+      },500)
     },
+
     change_slide(index) {
       this.slide_index = index
     },
+
     change_menu() {
       if(this.is_active === ''){
         this.is_active = 'is-active'
       } else{
         this.is_active = ''
       }
+    },
+
+    hide_placeholder () {
+      this.video_ready = true
+      this.$refs.video.play()
     }
   }
 }

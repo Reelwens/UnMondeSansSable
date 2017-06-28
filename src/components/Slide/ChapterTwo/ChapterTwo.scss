@@ -1,8 +1,41 @@
 $main-font: 'Lato';
 $secondary-font: 'Spectral';
+$basic-size: 15px;
+$semibig-size: 20px;
+$hero-size: 70px;
+$size-title: 30px;
+$yellow-pale: #F6D79D;
+$yellow: #F2C26A;
+
+.slide-container.video-ready
+{
+  .image-placeholder
+  {
+    opacity: 0;
+    transform: translateY(100vh);
+    transition: opacity 0.3s ease-in-out, transform 0.31s ease-in-out 0.3s
+  }
+
+  footer
+  {
+    transform: translateY(0%);
+  }
+}
 
 .slide-container
 {
+
+  .image-placeholder
+  {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 900px;
+    margin-left: 50vw;
+    transform: translateX(-50%) scale(1.6);
+    margin-top: 13vh;
+  }
 
   .header-container
   {
@@ -72,27 +105,140 @@ $secondary-font: 'Spectral';
       transition: 0.5s;
       width: 100vw;
       height: 100%;
+      background: black;
     }
 
-    .slides.slide-1
+    .slides.slide-intro
     {
       .slide-content-container
       {
         height: 100%;
         width: 100%;
-        video{
+        position: relative;
+
+        video
+        {
           width: 100%;
+        }
+
+        .text-content
+        {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          color: white;
+          text-align: center;
+          z-index: 10;
+
+          .chapter-number
+          {
+            width: 70px;
+            height: 70px;
+            background: $yellow-pale;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 70px;
+            color: black;
+            font-family: $secondary-font;
+            font-size: 25px;
+            display: inline-block;
+            z-index: 10;
+            margin-top: 130px;
+          }
+
+          .chapter-title
+          {
+            font-family: $secondary-font;
+            font-size: 40px;
+            color: $yellow-pale;
+            width: 50%;
+            margin: auto;
+            line-height: 45px;
+            margin-top: 70px;
+          }
+
+          .separator
+          {
+            background: white;
+            width: 150px;
+            height: 2px;
+            margin: auto;
+            margin-top: 40px;
+          }
+
+          .text-introduction
+          {
+            font-size: 18px;
+            font-family: $main-font;
+            width: 50%;
+            margin: auto;
+            line-height: 25px;
+            margin-top: 40px;
+          }
+        }
+        .black-background
+        {
+          background: rgba(0, 0, 0, 0.8);
+          width: 100vw;
+          height: 100vh;
+          z-index: 1;
+          position: absolute;
+          top: 0;
+          left: 0;
         }
       }
     }
 
-    .slides.slide-2
+    .slides.slide-quizz
     {
       .slide-content-container
       {
         width: 100%;
         height: 100%;
-        background-color: red;
+        color: white;
+
+        .background
+        {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          opacity: 0.7;
+        }
+
+        .quizz-content
+        {
+          margin-top: 200px;
+          width: 60vw;
+          margin-left: 20vw;
+          text-align: center;
+
+          .quizz-question
+          {
+            color: $yellow-pale;
+            font-family: $secondary-font;
+            font-size: $size-title;
+          }
+
+          .answer-case
+          {
+            border: solid $yellow-pale 2px;
+            display: inline-block;
+            margin-top: 50px;
+            padding: 20px 30px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+          }
+
+          .answer-case:hover
+          {
+            background: $yellow-pale;
+            color: black;
+          }
+        }
       }
     }
 
@@ -102,7 +248,6 @@ $secondary-font: 'Spectral';
       {
         width: 100%;
         height: 100%;
-        background-color: black;
       }
     }
 
@@ -112,7 +257,6 @@ $secondary-font: 'Spectral';
       {
         width: 100%;
         height: 100%;
-        background-color: orange;
       }
     }
 
@@ -121,7 +265,6 @@ $secondary-font: 'Spectral';
       {
         width: 100%;
         height: 100%;
-        background-color: lime;
       }
     }
 
@@ -130,7 +273,6 @@ $secondary-font: 'Spectral';
       {
         width: 100%;
         height: 100%;
-        background-color: grey;
       }
     }
 
@@ -139,7 +281,6 @@ $secondary-font: 'Spectral';
       {
         width: 100%;
         height: 100%;
-        background-color: green;
       }
     }
   }
@@ -198,10 +339,13 @@ $secondary-font: 'Spectral';
 
 footer{
   height: 10%;
-  z-index: 2;
+  z-index: 200;
   position: relative;
   display: flex;
   background-color: white;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
 
   .footer-title
   {

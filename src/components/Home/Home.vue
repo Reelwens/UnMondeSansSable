@@ -11,7 +11,7 @@
     </div>
 
     <div class="trailer-container">
-      <video ref="trailer" @canplay="hide_loader" @ended="hide_trailer" autoplay src="/static/videos/intro.mp4">Trailer de "2050 : Penurie de sable"</video>
+      <video ref="trailer" @canplaythrough="hide_loader" @ended="hide_trailer" src="/static/videos/intro.mp4">Trailer de "2050 : Penurie de sable"</video>
       <p @click="hide_trailer" class="skip-intro">Passer l'introduction</p>
     </div>
 
@@ -206,6 +206,7 @@ export default {
 
     hide_loader () {
       this.trailer_up = true
+      this.$refs.trailer.play()
     },
 
     hide_trailer () {
