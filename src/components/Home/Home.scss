@@ -296,9 +296,22 @@ body
 			{
 				position: absolute;
 				z-index: 10;
-				top: 92%;
+				top: 90%;
 				left: 50%;
 				transform: translateX(-50%);
+				color: white;
+				text-align: center;
+
+				img
+				{
+					width: 25px;
+					display: inline-block;
+				}
+
+				p
+				{
+					display: block;
+				}
 			}
 		}
 		

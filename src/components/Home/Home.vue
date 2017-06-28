@@ -3,12 +3,15 @@
 <template>
   <div v-bind:class="[{'change-page': change_page}, {'trailer-up': trailer_up}, {'trailer-done': trailer_done}]" class="home-container">
 
+    <audio loop class="audio-music" ref="audioMusic" src="/static/sounds/musics/home.mp3"></audio>
+    <audio class="audio-noise" ref="audioNoise" src="/static/sounds/noises/swipe.mp3"></audio>
+
     <div class="loader-container">
       <p>Loading...</p>
     </div>
 
     <div class="trailer-container">
-      <video @canplay="hide_loader" @ended="hide_trailer" autoplay src="/static/videos/intro.mp4">Trailer de "2050 : Penurie de sable"</video>
+      <video ref="trailer" @canplay="hide_loader" @ended="hide_trailer" autoplay src="/static/videos/intro.mp4">Trailer de "2050 : Penurie de sable"</video>
       <p @click="hide_trailer" class="skip-intro">Passer l'introduction</p>
     </div>
 
@@ -82,7 +85,10 @@
         <div class="background-black-overlay"></div>
       </div>
 
-      <a class="discover-button main-button" href="#">Découvrir</a>
+      <a class="discover-button" href="#">
+        <img src="../../assets/images/icons/mouse.svg" alt="Mouse">
+        <p>Dérouler pour découvrir</p>
+      </a>
     </div>
 
     <div class="navbar-container" v-bind:data-slide="slide_index">
@@ -176,12 +182,21 @@ export default {
 
     change_slide (index) {
       this.slide_index = index
+
+      this.$refs.audioNoise.load()
+      this.$refs.audioNoise.src = '/static/sounds/noises/clic.mp3';
+      this.$refs.audioNoise.play()
     },
 
     change_the_page () {
       if (this.scroll_allowed == true && this.trailer_done == true) {
         this.change_page = true
         this.scroll_allowed = false
+
+        this.$refs.audioNoise.load()
+        this.$refs.audioNoise.src = '/static/sounds/noises/swipe.mp3';
+        this.$refs.audioNoise.play()
+
         let _this = this
         window.setTimeout( () => {
           _this.$router.push(_this.pages[_this.slide_index])
@@ -195,7 +210,10 @@ export default {
 
     hide_trailer () {
       this.trailer_done = true
-    }
+      this.$refs.trailer.pause()
+      this.$refs.audioMusic.play()
+    },
+
 
   }
 }
