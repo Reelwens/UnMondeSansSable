@@ -71,8 +71,12 @@
         <video autoplay loop class="background background-4" src="/static/videos/chapter-4.mp4">Le desert de Dubaï</video>
         <video autoplay loop class="background background-5" src="/static/videos/chapter-5.mp4">Le desert de Dubaï</video>
         <div class="background-black-overlay"></div>
+<<<<<<< HEAD
       </div>
 
+=======
+      </div>      
+>>>>>>> 6ff5a4688f0adb22aa5e840f8ee5571ea3b93165
       <a class="discover-button main-button" href="#">Découvrir</a>
     </div>
 
