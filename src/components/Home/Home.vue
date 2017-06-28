@@ -17,7 +17,7 @@
         <div class="slide slide-1">
           <div class="slide-content-container">
             <img class="slide-background" src="../../assets/images/home/background-1.jpg">
-            <p class="slide-chapter-number">Chapter 01</p>
+            <p class="slide-chapter-number">Chapitre 01</p>
             <div class="slide-text-separator"></div>
             <h2 class="slide-text-title">Souvenirs</h2>
             <p class="slide-text-subtitle">Le sable : une ressource inestimable</p>
@@ -26,7 +26,7 @@
         <div class="slide slide-2">
           <div class="slide-content-container">
             <img class="slide-background" src="../../assets/images/home/background-2.jpg">
-            <p class="slide-chapter-number">Chapter 02</p>
+            <p class="slide-chapter-number">Chapitre 02</p>
             <div class="slide-text-separator"></div>
             <h2 class="slide-text-title">Inconscience</h2>
             <p class="slide-text-subtitle">Une ressource non-renouvable mais surexploité</p>
@@ -35,7 +35,7 @@
         <div class="slide slide-3">
           <div class="slide-content-container">
             <img class="slide-background" src="../../assets/images/home/background-3.jpg">
-            <p class="slide-chapter-number">Chapter 03</p>
+            <p class="slide-chapter-number">Chapitre 03</p>
             <div class="slide-text-separator"></div>
             <h2 class="slide-text-title">Folie</h2>
             <p class="slide-text-subtitle">Des usages pharaoniques</p>
@@ -44,7 +44,7 @@
         <div class="slide slide-4">
           <div class="slide-content-container">
             <img class="slide-background" src="../../assets/images/home/background-4.jpg">
-            <p class="slide-chapter-number">Chapter 04</p>
+            <p class="slide-chapter-number">Chapitre 04</p>
             <div class="slide-text-separator"></div>
             <h2 class="slide-text-title">Dérive</h2>
             <p class="slide-text-subtitle">L'exploitation clandestine</p>
@@ -53,7 +53,7 @@
         <div class="slide slide-5">
           <div class="slide-content-container">
             <img class="slide-background" src="../../assets/images/home/background-5.jpg">
-            <p class="slide-chapter-number">Chapter 05</p>
+            <p class="slide-chapter-number">Chapitre 05</p>
             <div class="slide-text-separator"></div>
             <h2 class="slide-text-title">Espoir</h2>
             <p class="slide-text-subtitle">Perspectives d'avenir</p>
@@ -73,7 +73,7 @@
         <div class="background-black-overlay"></div>
       </div>
       
-      <a class="discover-button main-button" href="#">Discover</a>
+      <a class="discover-button main-button" href="#">Découvrir</a>
     </div>
 
     <div class="navbar-container" v-bind:data-slide="slide_index">
