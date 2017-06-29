@@ -18,7 +18,7 @@
         <div class="chapter-title">Souvenirs : Avant le pénurie</div>
         <img class="background" src="../../../assets/images/home/background-1.jpg">
       </div>
-      <div class="menu-chapter menu-chapter-2">
+      <div @click="change_the_page(1)" class="menu-chapter menu-chapter-2">
         <div class="chapter-number">II</div>
         <div class="chapter-title">Inconscience : Une ressource surexploité</div>
         <img class="background" src="../../../assets/images/home/background-2.jpg">
@@ -33,7 +33,7 @@
         <div class="chapter-title">Dérive : Exploitation clandestine</div>
         <img class="background" src="../../../assets/images/home/background-4.jpg">
       </div>
-      <div @click="change_the_page(4)" class="menu-chapter menu-chapter-5">
+      <div class="menu-chapter menu-chapter-5">
         <div class="chapter-number">V</div>
         <div class="chapter-title">Espoir : Perspective d'avenir</div>
         <img class="background" src="../../../assets/images/home/background-5.jpg">
@@ -49,21 +49,20 @@
             <div class="chapter-number">V</div>
             <div class="chapter-title">Espoir- Perspectives d’avenir</div>
             <div class="separator"></div>
-            <p class="text-introduction">Le problème majeur de la disparition du sable repose sur notre ignorance.<br><br>Les politiques connaissent mal, voire ne connaissent pas les enjeux importants du sable ; les sensibiliser à cela devient essentiel.</p>
+            <p class="text-introduction">
+              Le problème majeur de la disparition du sable repose sur notre ignorance. Les politiques ne semblent pas se préoccuper des risques liés à la surexploitation de cette ressource, pourtant primordiale dans notre société.
+              <br><br>
+              Il est donc primordial de sensibiliser nos proches sur le sujet, ainsi que tous ceux qui nous entourent sur les solutions qui existent pour éviter la catastrophe.
+            </p>
           </div>
           <video ref="video" @canplay="hide_placeholder" src="../../../../static/videos/chapter-5.mp4" autoplay loop></video>
         </div>
       </div>
 
-      <div class="slides slide-2">
-        <div class="slide-content-container">
-
-        </div>
-      </div>
-      <div class="slides slide-3 slide-video">
+      <div class="slides slide-2 slide-video">
         <div class="slide-content-container">
           <div class="video-content">
-            <video src="../../../../static/videos/chapter-5-slide-video.mp4" loop poster="posterimage.jpg" ref="slide3" v-on:play="seek2"></video>
+            <video src="../../../../static/videos/chapter-5-slide-video.mp4" poster="posterimage.jpg" ref="slide3" v-on:play="seek2"></video>
           </div>
           <div class="video-controller">
             <button type="button" name="button" @click="play_pause2"><img v-bind:src="play_icon" alt="Bouton de lecture de la vidéo"></button>
@@ -73,21 +72,55 @@
             </div>
             <span>{{ current_time2 }}/{{ duration2 }}</span>
           </div>
-          <div class="video-title">
-            <h2>L'INNOVATION COMME PORTE DE SALUT</h2>
-            <h3>"Faisons confiance à nos scientifiques pour trouver une alternative viable"</h3>
+        </div>
+      </div>
+      <div v-bind:class="answer" class="slides slide-3 slide-quizz">
+        <div class="slide-content-container">
+          <div class="quizz-content">
+            <div class="question-infos-container">
+              <p class="quizz-question">Quelles sont les solutions envisageables parmi cette liste ?</p>
+              <div class="answers-container">
+                <div @click="right_answer" class="answer-case answer-1">Recherches sur le recyclage du sable</div>
+                <div @click="right_answer" class="answer-case answer-2">Recherches sur l’exploitation du sable des dunes de désert</div>
+                <div @click="right_answer" class="answer-case answer-3">Utilisation des gravats de bâtiments détruits pour construire des routes </div>
+                <div @click="right_answer" class="answer-case answer-4">Réduction de l’utilisation du béton par des matériaux renouvelables</div>
+              </div>
+            </div>
+            <div class="answer-infos-container">
+              <p class="right-answer-text">Bonne réponse</p>
+              <p class="wrong-answer-text">Mauvaise réponse</p>
+              <p class="answer-infos">
+                Toutes ces réponses sont vrais, il existe de nombreuses solutions pour régler le problème.
+              </p>
+            </div>
+          </div>
+          <img class="background" src="../../../assets/images/chapter-2/slide-2.jpg">
+        </div>
+      </div>
+      
+      <div class="slides slide-4 slide-data">
+        <div class="slide-content-container">
+          <div class="slide-content-container">
+            <p class="slide-title">Des dechets recyclables</p>
+            <div class="data-container">
+              <div class=" data data-1">
+                <div class="number">25.000 tonnes de sable et de graviers</div>
+                <div class="description">pour 30.000 tonnes de déchets.</div>
+              </div>
+              <div class=" data data-2">
+                <img class="graph" src="../../../assets/images/graphs/98.png">
+                <div class="description">98% de sable et de graviers dans ces déchets.</div>
+              </div>
+            </div>
+            <img class="background" src="../../../assets/images/chapter-2/slide-3.jpg">
           </div>
         </div>
       </div>
-      <div class="slides slide-4">
-        <div class="slide-content-container">
 
-        </div>
-      </div>
       <div class="slides slide-5 slide-video">
         <div class="slide-content-container">
           <div class="video-content">
-            <video src="../../../../static/videos/chapter-5-slide-video2.mp4" loop poster="posterimage.jpg" ref="slide2" v-on:play="seek"></video>
+            <video src="../../../../static/videos/chapter-5-slide-video2.mp4" poster="posterimage.jpg" ref="slide2" v-on:play="seek"></video>
           </div>
           <div class="video-controller">
             <button type="button" name="button" @click="play_pause"><img v-bind:src="play_icon" alt="Bouton de lecture de la vidéo"></button>
@@ -96,10 +129,6 @@
               <div class="duration-controller-seek" ref="seek_bar" @click="move_duration"></div>
             </div>
             <span>{{ current_time }}/{{ duration }}</span>
-          </div>
-          <div class="video-title">
-            <h2>L'OLYMPE À ÉCHELLE HUMAINE</h2>
-            <h3>"Une représentation du monde faite de sable, quelle ironie"</h3>
           </div>
         </div>
       </div>
@@ -116,8 +145,8 @@
     </div>
     <footer>
       <div class="footer-title">
-        <h2>Chapitre 2</h2>
-        <h2 class="part">Une ressource surexploitée</h2>
+        <h2>Chapitre 5</h2>
+        <h2 class="part">Perspectives d'avenir</h2>
       </div>
       <div class="footer-links">
         <div class="footer-links-container" v-bind:data-slide="slide_index">
@@ -177,6 +206,7 @@ export default {
       current_time2 : '',
       menu_active: false,
       change_page: '',
+      answer: '',
       pages: ['ChapterOne','ChapterTwo','ChapterThree','ChapterFour','ChapterFive'],
       video_ready: false,
     }
@@ -202,11 +232,11 @@ export default {
       // Scrolling down
       if(lethargy.check(e) === 1 && _this.scrolling === false){
 
-        _this.slide_down()
+        _this.slide_up()
 
       } else if(lethargy.check(e) === -1 && _this.scrolling === false) {
 
-        _this.slide_up()
+        _this.slide_down()
 
       }
     })
@@ -224,7 +254,7 @@ export default {
   methods: {
     slide_down() {
 
-      if(this.slide_index != 6){
+      if(this.slide_index != 4){
           this.slide_index += 1
       }
       if(this.slide_index == 4){
@@ -232,7 +262,7 @@ export default {
       } else {
         this.pause()
       }
-      if(this.slide_index == 2){
+      if(this.slide_index == 1){
         this.play2()
       } else {
         this.pause2()
@@ -251,13 +281,21 @@ export default {
       } else {
         this.pause()
       }
-      if(this.slide_index == 2){
+      if(this.slide_index == 1){
         this.play2()
       } else {
         this.pause2()
       }
       this.scroll_control()
 
+    },
+
+    right_answer () {
+      this.answer = 'right-answer';
+    },
+
+    wrong_answer () {
+      this.answer = 'wrong-answer';
     },
 
     scroll_control() {
