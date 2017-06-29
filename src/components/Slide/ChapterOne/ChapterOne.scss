@@ -162,7 +162,7 @@ $yellow: #F2C26A;
           top: 0;
           left: 0;
         }
-        
+
         @media screen and (max-width: 768px)
         {
           .text-content
@@ -174,7 +174,7 @@ $yellow: #F2C26A;
               margin-top: 40px;
               width: 80%;
             }
-            
+
             .text-introduction
             {
               font-size: 14px;
@@ -185,7 +185,7 @@ $yellow: #F2C26A;
         }
       }
     }
-    
+
     .slides.slide-def
     {
       .slide-content-container
@@ -194,7 +194,7 @@ $yellow: #F2C26A;
         height: 100%;
         background-color: black;
         color: white;
-        
+
         .text-content
         {
           position: absolute;
@@ -205,14 +205,14 @@ $yellow: #F2C26A;
           color: white;
           text-align: left;
           z-index: 10;
-          
+
           .part-name
           {
             font-size: $basic-size;
             font-family: $main-font;
             font-weight: 700;
           }
-          
+
           .text-separator
           {
             background: white;
@@ -221,7 +221,7 @@ $yellow: #F2C26A;
             position: absolute;
             margin-top: 18px;
           }
-          
+
           .main-text
           {
             font-size: $hero-size;
@@ -230,7 +230,7 @@ $yellow: #F2C26A;
             line-height: 60px;
             margin-top: 50px;
           }
-          
+
           .text-description
           {
             font-weight: 300;
@@ -239,7 +239,7 @@ $yellow: #F2C26A;
             opacity: 0.8;
           }
         }
-        
+
         .picture-content
         {
           margin-top: 30px;
@@ -248,7 +248,7 @@ $yellow: #F2C26A;
           width: 40vw;
           top: 50%;
           transform: translateY(-50%);
-          
+
           img
           {
             width: 385px;

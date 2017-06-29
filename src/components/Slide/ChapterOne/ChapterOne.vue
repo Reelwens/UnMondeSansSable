@@ -141,7 +141,8 @@ export default {
       duration : '',
       current_minutes : 0,
       current_seconds : 0,
-      current_time : ''
+      current_time : '',
+      video_ready: false
     }
   },
   created() {
@@ -261,7 +262,11 @@ export default {
     seek_animation() {
       this.ratio = this.$refs.slide2.currentTime/this.$refs.slide2.duration
       this.$refs.seek_bar.style.transform = `scaleX(${this.ratio})`
-    }
+    },
+    hide_placeholder () {
+      this.video_ready = true
+      this.$refs.video.play()
+    },
   }
 }
 
