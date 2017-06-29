@@ -1,7 +1,7 @@
 <style scoped lang="scss" src="./ChapterThree.scss"></style>
 
 <template>
-  <div class="slide-container">
+  <div class="slide-container" v-bind:class="{ 'video-ready' : video_ready }">
     <header class="header-container">
       <div class="logo-container">
         <a class="logo-link" href="#"><span class="big">2050</span> : Pénurie de sable</a>
@@ -10,6 +10,36 @@
         <button class="sound-button"><img src="../../../assets/images/icons/sound.svg" alt="Sound button"></button>
       </div>
     </header>
+    <img class="image-placeholder" src="../../../assets/images/home/background-3.jpg">
+
+    <div class="menu-container" v-bind:class="[{ 'active' : menu_active}, change_page]">
+      <div @click="change_the_page(0)" class="menu-chapter menu-chapter-1">
+        <div class="chapter-number">I</div>
+        <div class="chapter-title">Souvenirs : Avant le pénurie</div>
+        <img class="background" src="../../../assets/images/home/background-1.jpg">
+      </div>
+      <div @click="change_the_page(1)" class="menu-chapter menu-chapter-2">
+        <div class="chapter-number">II</div>
+        <div class="chapter-title">Inconscience : Une ressource surexploité</div>
+        <img class="background" src="../../../assets/images/home/background-2.jpg">
+      </div>
+      <div class="menu-chapter menu-chapter-3">
+        <div class="chapter-number">III</div>
+        <div class="chapter-title">Folie : Le manque de place</div>
+        <img class="background" src="../../../assets/images/home/background-3.jpg">
+      </div>
+      <div @click="change_the_page(3)" class="menu-chapter menu-chapter-4">
+        <div class="chapter-number">IV</div>
+        <div class="chapter-title">Dérive : Exploitation clandestine</div>
+        <img class="background" src="../../../assets/images/home/background-4.jpg">
+      </div>
+      <div @click="change_the_page(4)" class="menu-chapter menu-chapter-5">
+        <div class="chapter-number">V</div>
+        <div class="chapter-title">Espoir : Perspective d'avenir</div>
+        <img class="background" src="../../../assets/images/home/background-5.jpg">
+      </div>
+    </div>
+
     <div class="slides-container" v-bind:data-slide="slide_index">
 
       <div class="slides slide-1 slide-intro">
@@ -137,22 +167,11 @@
             <div class="footer-link-inner">
             </div>
           </div>
-          <div class="footer-link footer-link-6" @click="change_slide(5)">
-            <div class="footer-link-inner">
-            </div>
-          </div>
-          <div class="footer-link footer-link-7" @click="change_slide(6)">
-            <div class="footer-link-inner">
-            </div>
-          </div>
         </div>
       </div>
-      <div class="footer-menu">
-        <div class="hamburger hamburger--slider" @click="change_menu" v-bind:class="is_active">
-          <div class="hamburger-box">
-            <div class="hamburger-inner hamburger--slider"></div>
-          </div>
-        </div>
+      <div class="footer-menu" v-bind:class="{'menu-up' : menu_active}">
+        <img @click="show_menu" class="burger menu" src="../../../assets/images/icons/burger.svg">
+        <img @click="show_menu" class="burger cross" src="../../../assets/images/icons/cross.svg">
       </div>
     </footer>
   </div>
@@ -175,7 +194,11 @@ export default {
       current_minutes : 0,
       current_seconds : 0,
       current_time : '',
-      answer : ''
+      answer : '',
+      video_ready : false,
+      menu_active : false,
+      change_page: '',
+      pages: ['ChapterOne','ChapterTwo','ChapterThree','ChapterFour','ChapterFive'],
     }
   },
   created() {
@@ -197,11 +220,11 @@ export default {
       // Scrolling down
       if(lethargy.check(e) === 1 && _this.scrolling === false){
 
-        _this.slide_down()
+        _this.slide_up()
 
       } else if(lethargy.check(e) === -1 && _this.scrolling === false) {
 
-        _this.slide_up()
+        _this.slide_down()
 
       }
     })
@@ -223,7 +246,7 @@ export default {
           this.slide_index += 1
       }
 
-      if(this.slide_index == 1){
+      if(this.slide_index == 2){
         this.play()
       } else {
         this.pause()
@@ -232,6 +255,12 @@ export default {
       this.scroll_control()
 
     },
+
+    hide_placeholder () {
+      this.video_ready = true
+      this.$refs.video.play()
+    },
+
     slide_up() {
 
       if(this.slide_index != 0){
@@ -247,6 +276,7 @@ export default {
       this.scroll_control()
 
     },
+
     scroll_control() {
 
       this.duration_minutes = Math.floor(this.$refs.slide2.duration/60)
@@ -259,11 +289,13 @@ export default {
 
         this.scrolling = false
 
-      },1000)
+      },500)
     },
+
     change_slide(index) {
       this.slide_index = index
     },
+
     change_menu() {
       if(this.is_active === ''){
         this.is_active = 'is-active'
@@ -271,6 +303,23 @@ export default {
         this.is_active = ''
       }
     },
+
+    show_menu () {
+      if(this.menu_active == false)
+        this.menu_active = true
+      else
+        this.menu_active = false
+    },
+
+    change_the_page (index) {
+      this.change_page = 'page-' + index
+
+      let _this = this
+      window.setTimeout( () => {
+        _this.$router.push(_this.pages[index])
+      }, 600)
+    },
+
     play_pause() {
       if(this.$refs.slide2.paused == false){
         this.pause()
@@ -278,6 +327,7 @@ export default {
         this.play()
       }
     },
+
     play() {
       this.play_icon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUzNS41NzggNTM1LjU3OCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTM1LjU3OCA1MzUuNTc4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8Zz4KCQk8Zz4KCQkJPHBhdGggZD0iTTIzMS42LDUxNi4yNzhjMCwxMC42NTgtOC42NDEsMTkuMy0xOS4zLDE5LjNIMTA2LjE1Yy0xMC42NTksMC0xOS4zLTguNjQxLTE5LjMtMTkuM1YxOS4zICAgICBjMC0xMC42NTksOC42NDEtMTkuMywxOS4zLTE5LjNoMTA2LjE1YzEwLjY1OSwwLDE5LjMsOC42NDEsMTkuMywxOS4zVjUxNi4yNzh6IiBmaWxsPSIjZmVmZWZlIi8+CgkJCTxwYXRoIGQ9Ik00NDguNzI4LDUxNi4yNzhjMCwxMC42NTgtOC42NDEsMTkuMy0xOS4zLDE5LjNoLTEwNi4xNWMtMTAuNjU5LDAtMTkuMy04LjY0MS0xOS4zLTE5LjNWMTkuMyAgICAgYzAtMTAuNjU5LDguNjQxLTE5LjMsMTkuMy0xOS4zaDEwNi4xNWMxMC42NTksMCwxOS4zLDguNjQxLDE5LjMsMTkuM1Y1MTYuMjc4eiIgZmlsbD0iI2ZlZmVmZSIvPgoJCTwvZz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
       this.$refs.slide2.play()
