@@ -4,7 +4,7 @@
   <div class="slide-container" v-bind:class="{ 'video-ready' : video_ready }">
     <header class="header-container">
       <div class="logo-container">
-        <a class="logo-link" href="#"><span class="big">2050</span> : Pénurie de sable</a>
+        <a class="logo-link" href="#"><span class="big">2050</span> : Un monde sans sable</a>
       </div>
       <div class="sound-container">
         <button class="sound-button"><img src="../../../assets/images/icons/sound.svg" alt="Sound button"></button>
@@ -47,7 +47,7 @@
         <div class="black-background"></div>
           <div class="text-content">
             <div class="chapter-number">I</div>
-            <div class="chapter-title">Souvenirs - Le sable : une ressource inestimable</div>
+            <div class="chapter-title">Souvenirs - Avant la pénurie</div>
             <div class="separator"></div>
             <p class="text-introduction">À votre époque, le sable était synonyme de bien être, de finesse et de beauté. Vous en gardez surement des souvenirs de vos vacances, sur les plages de sable fin.<br><br>Ce que vous saviez probablement moins, c’est que la société en consommait des milliards de tonnes chaque année sans se soucier des réserves qu’il restait.</p>
           </div>
@@ -174,7 +174,7 @@
             <div class="answer-infos-container">
               <p class="right-answer-text">Bonne réponse</p>
               <p class="wrong-answer-text">Mauvaise réponse</p>
-              <p class="answer-infos">Le sable servait même dans l’innovation, tout reposait sur cette ressource.</p>
+              <p class="answer-infos">Le sable servait même dans l’innovation, un grand nombre d'éléments reposaient sur cette ressource.</p>
             </div>
           </div>
           <img class="background" src="../../../assets/images/chapter-1/slide-quizz.jpg">
@@ -183,8 +183,8 @@
     </div>
     <footer>
       <div class="footer-title">
-        <h2>Chapitre 2</h2>
-        <h2 class="part">Une ressource surexploitée</h2>
+        <h2>Chapitre 1</h2>
+        <h2 class="part">Avant la pénurie</h2>
       </div>
       <div class="footer-links">
         <div class="footer-links-container" v-bind:data-slide="slide_index">
