@@ -188,6 +188,27 @@ $yellow: #F2C26A;
           top: 0;
           left: 0;
         }
+        
+        @media screen and (max-width: 768px)
+        {
+          .text-content
+          {
+            .chapter-title
+            {
+              font-size: 30px;
+              line-height: 34px;
+              margin-top: 40px;
+              width: 80%;
+            }
+            
+            .text-introduction
+            {
+              font-size: 14px;
+              line-height: 20px;
+              width: 80%;
+            }
+          }
+        }
       }
     }
 
@@ -231,7 +252,8 @@ $yellow: #F2C26A;
             {
               display: inline-block;
               margin-top: 50px;
-              padding: 35px 50px;
+              padding: 35px;
+              width: 140px;
               color: black;
               cursor: pointer;
               transition: all 0.15s ease-in-out;
@@ -286,6 +308,27 @@ $yellow: #F2C26A;
               top: 80px;
             }
 
+          }
+        }
+        
+        @media screen and (max-width: 768px)
+        {
+          .quizz-content
+          {
+            margin-top: 30px;
+            
+            p.quizz-question {
+              margin: 10px 0;
+            }
+            
+            .answer-case {
+              margin-top: 10px!important;
+              padding: 35px 0 !important;
+            }
+            
+            .answers-container {
+              width: 90vw!important;
+            }
           }
         }
       }
