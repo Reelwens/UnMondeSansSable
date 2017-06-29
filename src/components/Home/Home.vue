@@ -32,7 +32,7 @@
             <p class="slide-chapter-number">Chapitre 01</p>
             <div class="slide-text-separator"></div>
             <h2 class="slide-text-title">Souvenirs</h2>
-            <p class="slide-text-subtitle">Le sable : une ressource inestimable</p>
+            <p class="slide-text-subtitle">Avant la pénurie</p>
           </div>
         </div>
         <div class="slide slide-2" @click="change_the_page">

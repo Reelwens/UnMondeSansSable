@@ -18,7 +18,7 @@
         <div class="chapter-title">Souvenirs : Avant le pénurie</div>
         <img class="background" src="../../../assets/images/home/background-1.jpg">
       </div>
-      <div @click="change_the_page(1)" class="menu-chapter menu-chapter-2">
+      <div class="menu-chapter menu-chapter-2">
         <div class="chapter-number">II</div>
         <div class="chapter-title">Inconscience : Une ressource surexploité</div>
         <img class="background" src="../../../assets/images/home/background-2.jpg">
@@ -315,16 +315,6 @@ export default {
         _this.slide_down()
 
       }
-    })
-
-    window.addEventListener('keydown', (e) => {
-
-
-      if(e.keyCode === 39)
-        _this.slide_down()
-      else if(e.keyCode === 37)
-        _this.slide_up()
-
     })
   },
   methods: {
