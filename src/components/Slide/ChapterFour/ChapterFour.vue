@@ -50,18 +50,69 @@
             <div class="chapter-number">IV</div>
             <div class="chapter-title">Dérive - L'exploitation clandestine</div>
             <div class="separator"></div>
-            <p class="text-introduction">Qui dit surexploitation du sable dit raréfaction et donc prix qui augmentent.<br><br>Cette surenchère donna naissance à une mafia du sable, qui sévissait particulièrement en Asie. On la retrouvait également en Inde et au Maroc.</p>
+            <p class="text-introduction">Cette surexploitation du sable sous entendait la raréfaction de cette ressource si précieuse. Ainsi, les prix augmentèrent de manière exponentielle.<br><br>Cette surenchère donna naissance à une mafia du sable, qui sévissait particulièrement en Asie. On la retrouvait également en Inde et au Maroc.</p>
           </div>
           <video ref="video" @canplay="hide_placeholder" src="../../../../static/videos/chapter-4.mp4" autoplay loop></video>
         </div>
       </div>
 
-      <div class="slides slide-2">
+      <div class="slides slide-2 slide-data">
         <div class="slide-content-container">
-
+          <div class="slide-content-container">
+            <p class="slide-title">Le sable était si cher qu’il était difficile de s’en procurer, nous ne reconnaissons que maintenant que sa valeur n’avait pas de prix.</p>
+            <div class="data-container">
+              <div class=" data data-1">
+                <div class="number">50€</div>
+                <div class="description">pour l’achat d’un mètre cube de sable</div>
+              </div>
+              <div class=" data data-2">
+                <div class="number">70 Md$</div>
+                <div class="description">comme chiffre d’affaires du marché du sable</div>
+              </div>
+            </div>
+            <div class="slide-description">
+              La forte demande du sable, associée à sa rareté, est à l’origine de gros échanges internationaux.
+            </div>
+            <img class="background" src="../../../assets/images/chapter-2/slide-3.jpg">
+          </div>
         </div>
       </div>
-      <div class="slides slide-3 slide-video">
+      
+      <div class="slides slide-3 slide-def">
+        <div class="slide-content-container">
+            <div class="text-content">
+              <div class="main-text">Le business du sable en Asie</div>
+              <div class="text-description">Le continent asiatique vivait un rythme de construction vertigineux car sa population avait augmenté de 20 % en l'espace de quarante ans.<br>Un commerce parallèle s’était notamment mis en place en Inde, où l’exploitation illégale y était monnaie courante.</div>
+            </div>
+            <div class="picture-content">
+              <img src="../../../assets/images/chapter-4/illegal.jpg" alt="Sand illegal">
+            </div>
+        </div>
+      </div>
+      
+      <div v-bind:class="answer" class="slides slide-4 slide-quizz">
+        <div class="slide-content-container">
+          <div class="quizz-content">
+            <div class="question-infos-container">
+              <p class="quizz-question">Combien de tonnes de sable sont exploités illégalement chaque année en Inde ?</p>
+              <div class="answers-container">
+                <div @click="wrong_answer" class="answer-case answer-1">1 tonne</div>
+                <div @click="wrong_answer" class="answer-case answer-2">2 mns de tonnes</div>
+                <div @click="wrong_answer" class="answer-case answer-3">200 mns de tonnes</div>
+                <div @click="right_answer" class="answer-case answer-4">2 mds de tonnes</div>
+              </div>
+            </div>
+            <div class="answer-infos-container">
+              <p class="right-answer-text">Bonne réponse</p>
+              <p class="wrong-answer-text">Mauvaise réponse</p>
+              <p class="answer-infos">L'importation illégale de sable fait rage et impacte sa régulation.</p>
+            </div>
+          </div>
+          <img class="background" src="../../../assets/images/chapter-2/slide-2.jpg">
+        </div>
+      </div>
+      
+      <div class="slides slide-5 slide-video">
         <div class="slide-content-container">
           <div class="video-content">
             <video src="../../../../static/videos/chapter-4-slide-video.mp4" loop poster="posterimage.jpg" ref="slide2" v-on:play="seek"></video>
@@ -75,21 +126,10 @@
             <span>{{ current_time }}/{{ duration }}</span>
           </div>
           <div class="video-title">
-            <h2>LA MAFIA DU SABLE EN INDE</h2>
-            <h3>"Ils ont la mainmise ici, un réseau secondaire est apparu, les populations sont impuissantes."</h3>
           </div>
         </div>
       </div>
-      <div class="slides slide-4">
-        <div class="slide-content-container">
 
-        </div>
-      </div>
-      <div class="slides slide-5">
-        <div class="slide-content-container">
-
-        </div>
-      </div>
       <div class="slides slide-6">
         <div class="slide-content-container">
 
@@ -154,6 +194,7 @@ export default {
       duration : '',
       current_minutes : 0,
       current_seconds : 0,
+      answer: '',
       current_time : '',
       video_ready: false,
       menu_active: false,
@@ -214,6 +255,13 @@ export default {
       }
       this.scroll_control()
 
+    },
+    right_answer () {
+      this.answer = 'right-answer';
+    },
+
+    wrong_answer () {
+      this.answer = 'wrong-answer';
     },
 
     slide_up() {
