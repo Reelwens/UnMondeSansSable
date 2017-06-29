@@ -53,13 +53,17 @@
             </div>
             <span>{{ current_time }}/{{ duration }}</span>
           </div>
+          <div class="video-title">
+            <h2>Un spectacle unique</h2>
+            <h3>"Appréciez le monde avant la pénurie, couvert de sable fin"</h3>
+          </div>
         </div>
       </div>
-      
+
       <div class="slides slide-chiffres">
         <div class="slide-content-container">
           <div class="picture-content">
-           
+
             <div class="picture pic1">
               <div class="hover-box">
                 <div class="circle">
@@ -68,7 +72,7 @@
               </div>
               <img src="../../../assets/images/chapter-1/chiffres1.jpg" alt="batiments">
             </div>
-            
+
             <div class="picture pic1">
               <div class="hover-box">
                 <div class="circle">
@@ -77,7 +81,7 @@
               </div>
               <img src="../../../assets/images/chapter-1/chiffres2.jpg" alt="cosmetics">
             </div>
-            
+
             <div class="picture pic1">
               <div class="hover-box">
                 <div class="circle">
@@ -86,7 +90,7 @@
               </div>
               <img src="../../../assets/images/chapter-1/chiffres3.jpg" alt="vin">
             </div>
-            
+
             <div class="picture pic1">
               <div class="hover-box">
                 <div class="circle">
@@ -95,9 +99,9 @@
               </div>
               <img src="../../../assets/images/chapter-1/chiffres4.jpg" alt="transport">
             </div>
-            
+
           </div>
-          
+
           <div class="text-content">
             <div class="main-text">
               Le sable nous servait pour toutes nos fabrications
