@@ -7,8 +7,34 @@ $size-title: 30px;
 $yellow-pale: #F6D79D;
 $yellow: #F2C26A;
 
+.slide-container.video-ready
+{
+  .image-placeholder
+  {
+    opacity: 0;
+    transform: translateY(100vh);
+    transition: opacity 0.3s ease-in-out, transform 0.31s ease-in-out 0.3s
+  }
+
+  footer
+  {
+    transform: translateY(0%);
+  }
+}
+
 .slide-container
 {
+  .image-placeholder
+  {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 900px;
+    margin-left: 50vw;
+    transform: translateX(-50%) scale(1.6);
+    margin-top: 13vh;
+  }
 
   .header-container
   {
@@ -59,6 +85,168 @@ $yellow: #F2C26A;
   height: 100%;
   width: 100%;
   font-family: $main-font;
+
+  .menu-container.page-0
+  {
+    .menu-chapter-1 .background
+    {
+      opacity: 1 !important;
+    }
+
+    .menu-chapter .chapter-number, .menu-chapter .chapter-title
+    {
+      opacity: 0;
+    }
+
+    .menu-chapter
+    {
+      border: none
+    }
+  }
+  .menu-container.page-1
+  {
+    .menu-chapter-2 .background
+    {
+      opacity: 1 !important;
+    }
+
+    .menu-chapter .chapter-number, .menu-chapter .chapter-title
+    {
+      opacity: 0;
+    }
+
+    .menu-chapter
+    {
+      border: none
+    }
+  }
+  .menu-container.page-2
+  {
+    .menu-chapter-3 .background
+    {
+      opacity: 1 !important;
+    }
+
+    .menu-chapter .chapter-number, .menu-chapter .chapter-title
+    {
+      opacity: 0;
+    }
+
+    .menu-chapter
+    {
+      border: none
+    }
+  }
+  .menu-container.page-3
+  {
+    .menu-chapter-4 .background
+    {
+      opacity: 1 !important;
+    }
+
+    .menu-chapter .chapter-number, .menu-chapter .chapter-title
+    {
+      opacity: 0;
+    }
+
+    .menu-chapter
+    {
+      border: none
+    }
+  }
+  .menu-container.page-4
+  {
+    .menu-chapter-5 .background
+    {
+      opacity: 1 !important;
+    }
+
+    .menu-chapter .chapter-number, .menu-chapter .chapter-title
+    {
+      opacity: 0;
+    }
+
+    .menu-chapter
+    {
+      border: none
+    }
+  }
+
+  .menu-container.active
+  {
+    opacity: 1;
+    transform: translateY(0vw);
+  }
+
+  .menu-container
+  {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 90vh;
+    z-index: 100;
+    color: white;
+    background: black;
+    opacity: 0;
+    transform: translateY(100vw);
+    transition: all 0.3s ease-in-out;
+
+    .menu-chapter
+    {
+      width: 100vw;
+      height: 20%;
+      box-sizing: border-box;
+      border-top: 1px solid rgba(255, 255, 255, 0.5);
+      text-align: center;
+      cursor: pointer;
+      overflow: hidden;
+
+      .chapter-number
+      {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        background: $yellow-pale;
+        color: black;
+        font-family: $secondary-font;
+        font-size: 20px;
+        line-height: 50px;
+        vertical-align: middle;
+        margin-top: 30px;
+        transition: transform 0.15s ease-in-out;
+      }
+
+      .chapter-title
+      {
+        margin-top: 20px;
+      }
+
+      .background
+      {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -2;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+
+      }
+    }
+
+    .menu-chapter:hover
+    {
+      .chapter-number
+      {
+        transform: scale(1.1);
+      }
+
+      .background
+      {
+        opacity: 0.2;
+      }
+    }
+  }
 
   .slides-container
   {
@@ -482,17 +670,21 @@ $yellow: #F2C26A;
 
 footer{
   height: 10%;
-  z-index: 2;
+  z-index: 200;
+  width: 100vw;
   position: relative;
   display: flex;
   background-color: white;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
 
   .footer-title
   {
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 2%;
+    margin-left: 45px;
 
     h2
     {
@@ -530,7 +722,7 @@ footer{
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-left: 5px;
+        margin: 0px 20px;
         cursor: pointer;
 
         .footer-link-inner{
@@ -544,11 +736,32 @@ footer{
     }
   }
 
-  .footer-menu{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: auto;
+  .footer-menu
+  {
+    display: inline-flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-right: 45px;
+
+    .burger
+    {
+      width: 25px;
+      float: right;
+      cursor: pointer;
+      position: absolute;
+      right: 45px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .menu{opacity: 1;}
+    .cross{opacity: 0;}
+  }
+
+  .footer-menu.menu-up
+  {
+    .menu{opacity: 0;}
+    .cross{opacity: 1;}
   }
 }
 
