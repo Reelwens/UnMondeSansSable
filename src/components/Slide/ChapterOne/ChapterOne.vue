@@ -20,7 +20,7 @@
             <div class="chapter-number">I</div>
             <div class="chapter-title">Souvenirs - Le sable : une ressource inestimable</div>
             <div class="separator"></div>
-            <p class="text-introduction">Le sable inspirait le bien être, la finesse et la beauté des paysages tropicaux. Personne ne savait qu’il allait disparaître à jamais.</p>
+            <p class="text-introduction">À votre époque, le sable était synonyme de bien être, de finesse et de beauté. Vous en gardez surement des souvenirs de vos vacances, sur les plages de sable fin.<br><br>Ce que vous saviez probablement moins, c’est que la société en consommait des milliards de tonnes chaque année sans se soucier des réserves qu’il restait.</p>
           </div>
           <video ref="video" @canplay="hide_placeholder" src="../../../../static/videos/chapter-1.mp4" autoplay loop poster="../../../assets/images/home/background-1.jpg"></video>
         </div>
@@ -31,7 +31,7 @@
           <div class="text-content">
             <div class="part-name">Introduction</div>
             <div class="text-separator"></div>
-            <div class="main-text">Une ressource minérale unique</div>
+            <div class="main-text">Définition</div>
             <div class="text-description">Tout solide dont le diamètre est compris entre 0,065 mm et 2mm de diamètre. Étant le matériau le plus dynamique de la planète, il joue un rôle majeur dans l'équilibre de la croûte terrestre.</div>
           </div>
           <div class="picture-content">
@@ -43,7 +43,7 @@
       <div class="slides slide-3 slide-video">
         <div class="slide-content-container">
           <div class="video-content">
-            <video src="../../../../static/videos/chapter-1-slide-video.mp4" loop poster="posterimage.jpg" ref="slide2" v-on:play="seek"></video>
+            <video src="../../../../static/videos/chapter-1-slide-video.mp4" loop poster="posterimage.jpg" ref="slide2" v-on:play="seek" muted></video>
           </div>
           <div class="video-controller">
             <button type="button" name="button" @click="play_pause"><img v-bind:src="play_icon" alt="Bouton de lecture de la vidéo"></button>
