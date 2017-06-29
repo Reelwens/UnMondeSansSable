@@ -54,7 +54,7 @@
             <span>{{ current_time }}/{{ duration }}</span>
           </div>
           <div class="video-title">
-            <h2>Un spectacle unique</h2>
+            <h2>UN SPECTACLE UNIQUE</h2>
             <h3>"Appréciez le monde avant la pénurie, couvert de sable fin"</h3>
           </div>
         </div>

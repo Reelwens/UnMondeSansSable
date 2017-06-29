@@ -211,6 +211,22 @@ $yellow: #F2C26A;
           }
         }
 
+        .video-title{
+          position: relative;
+          color: #fefefe;
+
+          h2{
+            position: absolute;
+            right: 6%;
+          }
+
+          h3{
+            position: absolute;
+            right: 6%;
+            margin-top: 5%;
+          }
+        }
+
         .video-controller{
           position: absolute;
           bottom: 7%;

@@ -44,6 +44,10 @@
             </div>
             <span>{{ current_time2 }}/{{ duration2 }}</span>
           </div>
+          <div class="video-title">
+            <h2>L'INNOVATION COMME PORTE DE SALUT</h2>
+            <h3>"Faisons confiance à nos scientifiques pour trouver une alternative viable"</h3>
+          </div>
         </div>
       </div>
       <div class="slides slide-4">
@@ -63,6 +67,10 @@
               <div class="duration-controller-seek" ref="seek_bar" @click="move_duration"></div>
             </div>
             <span>{{ current_time }}/{{ duration }}</span>
+          </div>
+          <div class="video-title">
+            <h2>L'OLYMPE À ÉCHELLE HUMAINE</h2>
+            <h3>"Une représentation du monde faite de sable, quelle ironie"</h3>
           </div>
         </div>
       </div>

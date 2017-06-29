@@ -194,7 +194,7 @@ $yellow: #F2C26A;
         height: 100%;
         background-color: black;
         color: white;
-        
+
         .text-content
         {
           position: absolute;
@@ -205,14 +205,14 @@ $yellow: #F2C26A;
           color: white;
           text-align: left;
           z-index: 10;
-          
+
           .part-name
           {
             font-size: $basic-size;
             font-family: $main-font;
             font-weight: 700;
           }
-          
+
           .text-separator
           {
             background: white;
@@ -221,7 +221,7 @@ $yellow: #F2C26A;
             position: absolute;
             margin-top: 18px;
           }
-          
+
           .main-text
           {
             font-size: $hero-size;
@@ -230,7 +230,7 @@ $yellow: #F2C26A;
             line-height: 60px;
             margin-top: 50px;
           }
-          
+
           .text-description
           {
             font-weight: 300;
@@ -239,7 +239,7 @@ $yellow: #F2C26A;
             opacity: 0.8;
           }
         }
-        
+
         .picture-content
         {
           margin-top: 30px;
@@ -248,7 +248,7 @@ $yellow: #F2C26A;
           width: 40vw;
           top: 50%;
           transform: translateY(-50%);
-          
+
           img
           {
             width: 385px;
@@ -256,7 +256,7 @@ $yellow: #F2C26A;
         }
       }
     }
-    
+
     .slides.slide-video
     {
       .slide-content-container
@@ -269,6 +269,22 @@ $yellow: #F2C26A;
           video{
             position: absolute;
             top: -130px;
+          }
+        }
+
+        .video-title{
+          position: relative;
+          color: #fefefe;
+
+          h2{
+            position: absolute;
+            right: 6%;
+          }
+
+          h3{
+            position: absolute;
+            right: 6%;
+            margin-top: 5%;
           }
         }
 
@@ -352,26 +368,26 @@ $yellow: #F2C26A;
         background-color: black;
         color: white;
       }
-      
+
       .picture-content
       {
         width: 550px;
         position: absolute;
         left: 8vw;
         top: 30vh;
-          
+
           img
           {
             width: 450px;
           }
       }
-      
+
       .text-content {
         position: absolute;
         width: 600px;
         left: 50vw;
         top: 23vh;
-          
+
           .main-text
           {
             font-size: $hero-size;
@@ -379,7 +395,7 @@ $yellow: #F2C26A;
             color: $yellow-pale;
             line-height: 65px;
           }
-          
+
           .text-description
           {
             font-weight: 300;
@@ -389,7 +405,7 @@ $yellow: #F2C26A;
           }
       }
     }
-    
+
     .slides.slide-quizz.right-answer
     {
       .slide-content-container .quizz-content
@@ -408,7 +424,7 @@ $yellow: #F2C26A;
         }
       }
     }
-    
+
     .slides.slide-quizz.wrong-answer
     {
       .slide-content-container .quizz-content
@@ -527,22 +543,22 @@ $yellow: #F2C26A;
 
           }
         }
-        
+
         @media screen and (max-width: 768px)
         {
           .quizz-content
           {
             margin-top: 30px;
-            
+
             p.quizz-question {
               margin: 10px 0;
             }
-            
+
             .answer-case {
               margin-top: 10px!important;
               padding: 35px 0 !important;
             }
-            
+
             .answers-container {
               width: 90vw!important;
             }

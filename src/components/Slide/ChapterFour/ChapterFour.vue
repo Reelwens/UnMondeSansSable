@@ -44,6 +44,10 @@
             </div>
             <span>{{ current_time }}/{{ duration }}</span>
           </div>
+          <div class="video-title">
+            <h2>LA MAFIA DU SABLE EN INDE</h2>
+            <h3>"Ils ont la mainmise ici, un réseau secondaire est apparu, les populations sont impuissantes."</h3>
+          </div>
         </div>
       </div>
       <div class="slides slide-4">

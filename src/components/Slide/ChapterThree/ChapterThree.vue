@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="slides slide-3 slide-video">
         <div class="slide-content-container">
           <div class="video-content">
@@ -53,21 +53,25 @@
             </div>
             <span>{{ current_time }}/{{ duration }}</span>
           </div>
+          <div class="video-title">
+            <h2>L'OLYMPE À ÉCHELLE HUMAINE</h2>
+            <h3>"Une représentation du monde faite de sable, quelle ironie"</h3>
+          </div>
         </div>
       </div>
-      
+
       <div class="slides slide-4">
         <div class="slide-content-container">
 
         </div>
       </div>
-      
+
       <div class="slides slide-5 slide-chiffres">
         <div class="slide-content-container">
           <div class="picture-content">
             <img src="../../../assets/images/chapter-3/singapour.jpg" alt="Carte de singapour">
           </div>
-          
+
           <div class="text-content">
             <div class="main-text">
               L'expension de Singapour entre 2010 et 2030
@@ -78,7 +82,7 @@
           </div>
         </div>
       </div>
-      
+
       <div v-bind:class="answer" class="slides slide-6 slide-quizz">
         <div class="slide-content-container">
           <div class="quizz-content">
@@ -100,7 +104,7 @@
           <img class="background" src="../../../assets/images/chapter-3/quizz-superficie.jpg">
         </div>
       </div>
-      
+
       <div class="slides slide-7">
         <div class="slide-content-container">
 
@@ -295,7 +299,7 @@ export default {
       this.ratio = this.$refs.slide2.currentTime/this.$refs.slide2.duration
       this.$refs.seek_bar.style.transform = `scaleX(${this.ratio})`
     },
-    
+
     right_answer () {
       this.answer = 'right-answer';
     },
