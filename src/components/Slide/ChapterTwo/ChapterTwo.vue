@@ -191,6 +191,16 @@ export default {
 
       }
     })
+
+    window.addEventListener('keydown', (e) => {
+
+
+      if(e.keyCode === 39)
+        _this.slide_down()
+      else if(e.keyCode === 37)
+        _this.slide_up()
+
+    })
   },
   methods: {
 
