@@ -76,10 +76,10 @@
             <div class="picture pic1">
               <div class="hover-box">
                 <div class="circle">
-                  <p>Cosmétics</p>
+                  <p>Cosmétiques</p>
                 </div>
               </div>
-              <img src="../../../assets/images/chapter-1/chiffres2.jpg" alt="cosmetics">
+              <img src="../../../assets/images/chapter-1/chiffres2.jpg" alt="cosmetiques">
             </div>
 
             <div class="picture pic1">
