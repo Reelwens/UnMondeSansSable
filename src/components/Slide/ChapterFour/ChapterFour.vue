@@ -133,11 +133,6 @@
 
       <div class="slides slide-6 slide-def">
         <div class="slide-content-container">
-
-        </div>
-      </div>
-      <div class="slides slide-7">
-        <div class="slide-content-container">
           <div class="text-content">
             <div class="main-text">Le vol du sable marocain</div>
             <div class="text-description">Au Maroc le tourisme était alors en plein essor, la surexploitation du sable était donc à son paroxysme. On estimait que 40 % du sable utilisé avait été volé sur les plages marocaines.<br>De plus, celui-ci était bien souvent mal traité. Il n’était donc pas débarrassé du sodium présent dans l’eau de mer, ce qui rendait les constructions vulnérables à la corrosion.</div>
