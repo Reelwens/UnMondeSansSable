@@ -11,7 +11,7 @@
       </div>
     </header>
 
-    <img class="image-placeholder" src="../../../assets/images/home/background-2.jpg">
+    <img class="image-placeholder" src="../../../assets/images/home/background-4.jpg">
 
     <div class="menu-container" v-bind:class="[{ 'active' : menu_active}, change_page]">
       <div @click="change_the_page(0)" class="menu-chapter menu-chapter-1">
