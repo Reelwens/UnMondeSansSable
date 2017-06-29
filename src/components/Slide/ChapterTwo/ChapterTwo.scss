@@ -381,6 +381,103 @@ $yellow: #F2C26A;
         height: 100%;
         position: relative;
 
+        .slide-title
+        {
+          position: absolute;
+          top: 70px;
+          left: 50%;
+          transform: translateX(-50%);
+          font-family: $secondary-font;
+          font-size: $size-title;
+          color: $yellow-pale;
+          z-index: 5;
+          text-align: center;
+        }
+
+        .data-container
+        {
+          position: absolute;
+          top: 150px;
+          left: 0px;
+          width: 100vw;
+          z-index: 2;
+          color: white;
+
+          .data
+          {
+            width: 20%;
+            display: inline-block;
+            margin-left: 10%;
+            text-align: center;
+            height: 500px;
+            vertical-align: middle;
+          }
+
+          .data-1
+          {
+
+            .number
+            {
+              font-family: $secondary-font;
+              font-size: 30px;
+              margin-top: 120px;
+            }
+
+            .description
+            {
+              margin-top: 30px;
+              opacity: 0.5
+            }
+          }
+
+          .data-2
+          {
+
+            .graph
+            {
+              width: 300px;
+              display: inline-block;
+              margin-bottom: 20px;
+            }
+
+            .description
+            {
+              opacity: 0.5
+            }
+          }
+
+          .data-3
+          {
+            margin-top: 100px;
+
+            .graph
+            {
+              width: 200px;
+              display: inline-block;
+              margin-bottom: 20px;
+            }
+
+            .description
+            {
+              opacity: 0.5
+            }
+          }
+        }
+
+        .slide-description
+        {
+          position: absolute;
+          bottom: 50px;
+          left: 50%;
+          width: 50%;
+          transform: translateX(-50%);
+          color: white;
+          z-index: 5;
+          text-align:center;
+          font-size: $basic-size;
+          line-height: 20px;
+        }
+
         .background
         {
           position: absolute;

@@ -53,15 +53,15 @@
         <div class="slide-content-container">
           <p class="slide-title">Les ressources de sable dans le monde</p>
           <div class="data-container">
-            <div class="data-1">
-              <div class="number">120.OOO.OOO.OOO.OOO.OOO</div>
-              <div class="description">de milliards de tonnes de sable dans le monde</div>
+            <div class=" data data-1">
+              <div class="number">120 millions de milliards</div>
+              <div class="description">de tonnes de sable dans le monde</div>
             </div>
-            <div class="data-2">
+            <div class=" data data-2">
               <img class="graph" src="../../../assets/images/graphs/one-third.png">
               <div class="description">La sable représente 1/3 du total des sédiments dans le monde</div>
             </div>
-            <div class="data-3">
+            <div class=" data data-3">
               <img class="graph" src="../../../assets/images/graphs/85.png">
               <div class="description">Le désert contient 85,5% des reserves de sable exploitables</div>
             </div>

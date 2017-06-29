@@ -333,13 +333,95 @@ $yellow: #F2C26A;
       }
     }
 
-    .slides.slide-4
+    .slides.slide-chiffres
     {
       .slide-content-container
       {
         width: 100%;
         height: 100%;
-        background-color: orange;
+        background-color: black;
+        color: white;
+      }
+      
+      .picture-content
+      {
+        width: 550px;
+        position: absolute;
+        left: 8vw;
+        top: 15vh;
+        
+        .picture
+        {
+          position: relative;
+          display: inline-block;
+          margin: 20px;
+          
+          .hover-box
+          {
+            position: absolute;
+            opacity: 0;
+            width: 225px;
+            height: 225px;
+            text-align: center;
+            transition: opacity 0.2s;
+            transition-timing-function: cubic-bezier(.29, .01, .27, .99);
+            cursor: default;
+            
+            .circle 
+            {
+              position: absolute;
+              border: 2px solid $yellow;
+              border-radius: 1000px;
+              width: 150px;
+              height: 150px;
+              left: 50%;
+              top: 50%;
+              transform: translateX(-50%) translateY(-50%);
+              
+              p
+              {
+                display: inline-block;
+                font-size: 20px;
+                text-transform: uppercase;
+                margin-top: 64px;
+              }
+            }
+            
+            &:hover
+            {
+              background-color: rgba(0, 0, 0, 0.5);
+              opacity: 1;
+            }
+          }
+          
+          img
+          {
+            width: 225px;
+          }
+        }
+      }
+      
+      .text-content {
+        position: absolute;
+        width: 600px;
+        left: 50vw;
+        top: 23vh;
+          
+          .main-text
+          {
+            font-size: $hero-size;
+            font-family: $secondary-font;
+            color: $yellow-pale;
+            line-height: 60px;
+          }
+          
+          .text-description
+          {
+            font-weight: 300;
+            line-height: 35px;
+            margin-top: 73px;
+            opacity: 0.8;
+          }
       }
     }
 
