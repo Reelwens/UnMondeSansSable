@@ -12,7 +12,7 @@
       </div>
     </header>
     <div class="slides-container" v-bind:data-slide="slide_index">
-      
+
       <div class="slides slide-1 slide-intro">
         <div class="slide-content-container">
         <div class="black-background"></div>
@@ -25,7 +25,7 @@
           <video ref="video" @canplay="hide_placeholder" src="../../../../static/videos/chapter-1.mp4" autoplay loop poster="../../../assets/images/home/background-1.jpg"></video>
         </div>
       </div>
-      
+
       <div class="slides slide-2 slide-def">
         <div class="slide-content-container">
           <div class="text-content">
@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="slides slide-3 slide-video">
         <div class="slide-content-container">
           <div class="video-content">
@@ -225,7 +225,7 @@ export default {
       if(this.slide_index != 6){
         this.slide_index += 1
       }
-      if(this.slide_index == 1){
+      if(this.slide_index == 2){
         this.play()
       } else {
         this.pause()
@@ -238,7 +238,7 @@ export default {
       if(this.slide_index != 0){
           this.slide_index -= 1
       }
-      if(this.slide_index == 1){
+      if(this.slide_index == 2){
         this.play()
       } else {
         this.pause()
