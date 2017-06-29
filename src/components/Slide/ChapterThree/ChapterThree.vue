@@ -26,7 +26,21 @@
         </div>
       </div>
 
-      <div class="slides slide-2 slide-video">
+      <div class="slides slide-2 slide-def">
+        <div class="slide-content-container">
+          <div class="text-content">
+            <div class="part-name">Introduction</div>
+            <div class="text-separator"></div>
+            <div class="main-text">La folie des grandeurs</div>
+            <div class="text-description">Dubaï représentait peut-être la plus grande manifestation de notre inconscience. Face à une situation économique difficile et une soif de croissance insatisfaisable, Ils avaient décidé de construire des îles artificielles.<br>Le but : faire de Dubaï la destination touristique de luxe par excellence. C’était moins cher sur le court-terme que d’acheter des terres, mais le prix à payer fut fort sur le long-terme.</div>
+          </div>
+          <div class="picture-content">
+            <img src="../../../assets/images/chapter-3/intro-pic.jpg" alt="Batiments">
+          </div>
+        </div>
+      </div>
+      
+      <div class="slides slide-3 slide-video">
         <div class="slide-content-container">
           <div class="video-content">
             <video src="../../../../static/videos/chapter-3-slide-video.mp4" loop poster="posterimage.jpg" ref="slide2" v-on:play="seek"></video>
@@ -41,27 +55,52 @@
           </div>
         </div>
       </div>
-
-      <div class="slides slide-3">
-        <div class="slide-content-container">
-
-        </div>
-      </div>
+      
       <div class="slides slide-4">
         <div class="slide-content-container">
 
         </div>
       </div>
-      <div class="slides slide-5">
+      
+      <div class="slides slide-5 slide-chiffres">
         <div class="slide-content-container">
-
+          <div class="picture-content">
+            <img src="../../../assets/images/chapter-3/singapour.jpg" alt="Carte de singapour">
+          </div>
+          
+          <div class="text-content">
+            <div class="main-text">
+              L'expension de Singapour entre 2010 et 2030
+            </div>
+            <div class="text-description">
+              Nous étions aussi fautif à Singapour, le problème de la surpopulation se faisait urgent, c’est pourquoi nous avons voulu agrandir la ville en mer<br>Nous décidions alors de récolter le sable sur les territoires marins des pays voisins, cela apporta son lot de conflits.<br>Les 5 pays voisins montèrent un embargo contre l'île, en vain.
+            </div>
+          </div>
         </div>
       </div>
-      <div class="slides slide-6">
+      
+      <div v-bind:class="answer" class="slides slide-6 slide-quizz">
         <div class="slide-content-container">
-
+          <div class="quizz-content">
+            <div class="question-infos-container">
+              <p class="quizz-question">Quelle est la superficie de Singapour ?</p>
+              <div class="answers-container">
+                <div @click="wrong_answer" class="answer-case answer-1">650m²</div>
+                <div @click="right_answer" class="answer-case answer-2">750m²</div>
+                <div @click="wrong_answer" class="answer-case answer-3">1360m²</div>
+                <div @click="wrong_answer" class="answer-case answer-4">2680m²</div>
+              </div>
+            </div>
+            <div class="answer-infos-container">
+              <p class="right-answer-text">Bonne réponse</p>
+              <p class="wrong-answer-text">Mauvaise réponse</p>
+              <p class="answer-infos">L'expension de la cité-État à travers la conquête du sable fut très mal percue en Orient.</p>
+            </div>
+          </div>
+          <img class="background" src="../../../assets/images/chapter-3/quizz-superficie.jpg">
         </div>
       </div>
+      
       <div class="slides slide-7">
         <div class="slide-content-container">
 
@@ -132,7 +171,8 @@ export default {
       duration : '',
       current_minutes : 0,
       current_seconds : 0,
-      current_time : ''
+      current_time : '',
+      answer : ''
     }
   },
   created() {
@@ -254,6 +294,14 @@ export default {
     seek_animation() {
       this.ratio = this.$refs.slide2.currentTime/this.$refs.slide2.duration
       this.$refs.seek_bar.style.transform = `scaleX(${this.ratio})`
+    },
+    
+    right_answer () {
+      this.answer = 'right-answer';
+    },
+
+    wrong_answer () {
+      this.answer = 'wrong-answer';
     }
   }
 }
