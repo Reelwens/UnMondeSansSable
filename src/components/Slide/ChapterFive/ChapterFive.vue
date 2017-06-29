@@ -12,11 +12,20 @@
       </div>
     </header>
     <div class="slides-container" v-bind:data-slide="slide_index">
-      <div class="slides slide-1">
+      
+       <div class="slides slide-1 slide-intro">
         <div class="slide-content-container">
-          <video src="../../../../static/videos/chapter-5.mp4" autoplay loop poster="../../../assets/images/home/background-1.jpg"></video>
+        <div class="black-background"></div>
+          <div class="text-content">
+            <div class="chapter-number">V</div>
+            <div class="chapter-title">Espoir- Perspectives d’avenir</div>
+            <div class="separator"></div>
+            <p class="text-introduction">Le problème majeur de la disparition du sable repose sur notre ignorance.<br><br>Les politiques connaissent mal, voire ne connaissent pas les enjeux importants du sable ; les sensibiliser à cela devient essentiel.</p>
+          </div>
+          <video ref="video" @canplay="hide_placeholder" src="../../../../static/videos/chapter-5.mp4" autoplay loop></video>
         </div>
       </div>
+      
       <div class="slides slide-2">
         <div class="slide-content-container">
 

@@ -12,11 +12,21 @@
       </div>
     </header>
     <div class="slides-container" v-bind:data-slide="slide_index">
-      <div class="slides slide-1">
+      
+      <div class="slides slide-1 slide-intro">
         <div class="slide-content-container">
-          <video src="../../../../static/videos/chapter-3.mp4" autoplay loop poster="../../../assets/images/home/background-1.jpg"></video>
+        <div class="black-background"></div>
+          <div class="text-content">
+            <div class="chapter-number">III</div>
+            <div class="chapter-title">Folie - Des usages pharaoniques</div>
+            <div class="separator"></div>
+            <p class="text-introduction">Les villes du monde venaient à manquer de place, les buildings ne suffisaient plus, c’est pourquoi nous avons voulu faire reculer la mer.<br><br>Il n'y avait pas pire choix que celui-ci.</p>
+          </div>
+          <video ref="video" @canplay="hide_placeholder" src="../../../../static/videos/chapter-3.mp4" autoplay loop></video>
         </div>
       </div>
+      
+      
       <div class="slides slide-2 slide-def">
         <div class="slide-content-container">
           <div class="text-content">

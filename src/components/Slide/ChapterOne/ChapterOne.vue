@@ -12,11 +12,20 @@
       </div>
     </header>
     <div class="slides-container" v-bind:data-slide="slide_index">
-      <div class="slides slide-1">
+      
+      <div class="slides slide-1 slide-intro">
         <div class="slide-content-container">
-          <video src="../../../../static/videos/chapter-1.mp4" autoplay loop poster="../../../assets/images/home/background-1.jpg"></video>
+        <div class="black-background"></div>
+          <div class="text-content">
+            <div class="chapter-number">I</div>
+            <div class="chapter-title">Souvenirs - Le sable : une ressource inestimable</div>
+            <div class="separator"></div>
+            <p class="text-introduction">Le sable inspirait le bien être, la finesse et la beauté des paysages tropicaux. Personne ne savait qu’il allait disparaître à jamais.</p>
+          </div>
+          <video ref="video" @canplay="hide_placeholder" src="../../../../static/videos/chapter-1.mp4" autoplay loop poster="../../../assets/images/home/background-1.jpg"></video>
         </div>
       </div>
+      
       <div class="slides slide-2">
         <div class="slide-content-container">
           <div class="video-content">

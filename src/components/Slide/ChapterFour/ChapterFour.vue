@@ -12,11 +12,20 @@
       </div>
     </header>
     <div class="slides-container" v-bind:data-slide="slide_index">
-      <div class="slides slide-1">
+     
+      <div class="slides slide-1 slide-intro">
         <div class="slide-content-container">
-          <video src="../../../../static/videos/chapter-4.mp4" autoplay loop poster="../../../assets/images/home/background-1.jpg"></video>
+        <div class="black-background"></div>
+          <div class="text-content">
+            <div class="chapter-number">IV</div>
+            <div class="chapter-title">Dérive - L'exploitation clandestine</div>
+            <div class="separator"></div>
+            <p class="text-introduction">Qui dit surexploitation du sable dit raréfaction et donc prix qui augmentent.<br><br>Cette surenchère donna naissance à une mafia du sable, qui sévissait particulièrement en Asie. On la retrouvait également en Inde et au Maroc.</p>
+          </div>
+          <video ref="video" @canplay="hide_placeholder" src="../../../../static/videos/chapter-4.mp4" autoplay loop></video>
         </div>
       </div>
+      
       <div class="slides slide-2">
         <div class="slide-content-container">
 

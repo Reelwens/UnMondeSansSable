@@ -118,7 +118,9 @@ $yellow: #F2C26A;
 
         video
         {
-          width: 100%;
+          object-fit: cover;
+          object-position: 50% 50%;
+          min-width: 100%;
         }
 
         .text-content

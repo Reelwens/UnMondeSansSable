@@ -23,7 +23,7 @@
             <div class="separator"></div>
             <p class="text-introduction">Le sable faisait rêver car il évoquait la plage, les vacances, les îles paradisiaques, mais l'envers du décor n'était peut-être pas aussi paradisiaque qu'il n'y paraissait.<br><br> Contrairement à l’or noir, le sable était perçu comme inépuisable et fut exploité à outrance</p>
           </div>
-          <video ref="video" @canplay="hide_placeholder" src="../../../../static/videos/chapter-2.mp4" loop></video>
+          <video ref="video" @canplay="hide_placeholder" src="../../../../static/videos/chapter-2.mp4" autoplay loop></video>
         </div>
       </div>
 

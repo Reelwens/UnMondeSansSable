@@ -1,5 +1,11 @@
 $main-font: 'Lato';
 $secondary-font: 'Spectral';
+$basic-size: 15px;
+$semibig-size: 20px;
+$hero-size: 70px;
+$size-title: 30px;
+$yellow-pale: #F6D79D;
+$yellow: #F2C26A;
 
 .slide-container
 {
@@ -74,15 +80,108 @@ $secondary-font: 'Spectral';
       height: 100%;
     }
 
-    .slides.slide-1
+    .slides.slide-intro
     {
       .slide-content-container
       {
         height: 100%;
         width: 100%;
-        video{
+        position: relative;
+
+        video
+        {
           object-fit: cover;
           object-position: 50% 50%;
+          min-width: 100%;
+        }
+
+        .text-content
+        {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          color: white;
+          text-align: center;
+          z-index: 10;
+
+          .chapter-number
+          {
+            width: 70px;
+            height: 70px;
+            background: $yellow-pale;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 70px;
+            color: black;
+            font-family: $secondary-font;
+            font-size: 25px;
+            display: inline-block;
+            z-index: 10;
+            margin-top: 130px;
+          }
+
+          .chapter-title
+          {
+            font-family: $secondary-font;
+            font-size: 40px;
+            color: $yellow-pale;
+            width: 50%;
+            margin: auto;
+            line-height: 45px;
+            margin-top: 70px;
+          }
+
+          .separator
+          {
+            background: white;
+            width: 150px;
+            height: 2px;
+            margin: auto;
+            margin-top: 40px;
+          }
+
+          .text-introduction
+          {
+            font-size: 18px;
+            font-family: $main-font;
+            width: 50%;
+            margin: auto;
+            line-height: 25px;
+            margin-top: 40px;
+          }
+        }
+        .black-background
+        {
+          background: rgba(0, 0, 0, 0.8);
+          width: 100vw;
+          height: 100vh;
+          z-index: 1;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        
+        @media screen and (max-width: 768px)
+        {
+          .text-content
+          {
+            .chapter-title
+            {
+              font-size: 30px;
+              line-height: 34px;
+              margin-top: 40px;
+              width: 80%;
+            }
+            
+            .text-introduction
+            {
+              font-size: 14px;
+              line-height: 20px;
+              width: 80%;
+            }
+          }
         }
       }
     }

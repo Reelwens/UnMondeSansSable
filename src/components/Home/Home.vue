@@ -11,13 +11,13 @@
     </div>
 
     <div class="trailer-container">
-      <video ref="trailer" @canplaythrough="hide_loader" @ended="hide_trailer" src="/static/videos/intro.mp4">Trailer de "2050 : Penurie de sable"</video>
+      <video ref="trailer" @canplaythrough="hide_loader" @ended="hide_trailer" src="/static/videos/intro.mp4">Trailer de "2050 : Un monde sans sable"</video>
       <p @click="hide_trailer" class="skip-intro">Passer l'introduction</p>
     </div>
 
     <header class="header-container">
       <div class="logo-container">
-        <a class="logo-link" href="#"><span class="big">2050</span> : Pénurie de sable</a>
+        <a class="logo-link" href="#"><span class="big">2050</span> : Un monde sans sable</a>
       </div>
       <div class="sound-container">
         <button class="sound-button"><img src="../../assets/images/icons/sound.svg" alt="Sound button"></button>
