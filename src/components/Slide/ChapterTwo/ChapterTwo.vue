@@ -27,19 +27,21 @@
         </div>
       </div>
 
-      <div class="slides slide-2 slide-quizz">
+      <div v-bind:class="answer" class="slides slide-2 slide-quizz">
         <div class="slide-content-container">
           <div class="quizz-content">
-            <p class="quizz-question">Où trouve t-on le plus de sable dans le monde ?</p>
-            <div class="answers-container">
-              <div class="answer-case answer-1">Dans des carrières</div>
-              <div class="answer-case answer-2">Dans les déserts</div>
-              <div class="answer-case answer-3">Sur les plages</div>
-              <div class="answer-case answer-4">Dans les rivières</div>
+            <div class="question-infos-container">
+              <p class="quizz-question">Où trouve t-on le plus de sable dans le monde ?</p>
+              <div class="answers-container">
+                <div @click="wrong_answer" class="answer-case answer-1">Dans des carrières</div>
+                <div @click="right_answer" class="answer-case answer-2">Dans les déserts</div>
+                <div @click="wrong_answer" class="answer-case answer-3">Sur les plages</div>
+                <div @click="wrong_answer" class="answer-case answer-4">Dans les rivières</div>
+              </div>
             </div>
             <div class="answer-infos-container">
-              <p class="right-answer">Bonne réponse</p>
-              <p class="Wrong-answer">Mauvaise réponse</p>
+              <p class="right-answer-text">Bonne réponse</p>
+              <p class="wrong-answer-text">Mauvaise réponse</p>
               <p class="answer-infos">Néanmoins le sable de désert, ne s'agrège pas et donc ne peut être utilisé pour la construction . Les promoteurs de Dubaï en ont fait les frais lorsqu'ils ont dus faire apporter du sable d’Australie alors qu’ils se trouvent au milieu du desert.</p>
             </div>
           </div>
@@ -112,7 +114,8 @@ export default {
       animation : '',
       slide_index : 0,
       is_active : '',
-      video_ready: false
+      video_ready: false,
+      answer: '',
     }
   },
   created() {
@@ -188,6 +191,14 @@ export default {
     hide_placeholder () {
       this.video_ready = true
       this.$refs.video.play()
+    },
+
+    right_answer () {
+      this.answer = 'right-answer';
+    },
+
+    wrong_answer () {
+      this.answer = 'wrong-answer';
     }
   }
 }
