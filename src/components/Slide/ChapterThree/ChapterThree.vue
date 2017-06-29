@@ -26,20 +26,12 @@
         </div>
       </div>
       
-      
-      <div class="slides slide-2 slide-def">
+      <div class="slides slide-2">
         <div class="slide-content-container">
-          <div class="text-content">
-            <div class="part-name">Introduction</div>
-            <div class="text-separator"></div>
-            <div class="main-text">Une ressource minérale unique</div>
-            <div class="text-description">Tout solide dont le diamètre est compris entre 0,065 mm et 2mm de diamètre. Étant le matériau le plus dynamique de la planète, il joue un rôle majeur dans l'équilibre de la croûte terrestre.</div>
-          </div>
-          <div class="picture-content">
-            <img src="../../../assets/images/chapter-1/sand_def.jpg" alt="Sand definition">
-          </div>
+
         </div>
-      </div>
+      </div>      
+      
       <div class="slides slide-3">
         <div class="slide-content-container">
 
