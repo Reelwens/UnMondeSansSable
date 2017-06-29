@@ -42,16 +42,34 @@
             <div class="answer-infos-container">
               <p class="right-answer-text">Bonne réponse</p>
               <p class="wrong-answer-text">Mauvaise réponse</p>
-              <p class="answer-infos">Néanmoins le sable de désert, ne s'agrège pas et donc ne peut être utilisé pour la construction . Les promoteurs de Dubaï en ont fait les frais lorsqu'ils ont dus faire apporter du sable d’Australie alors qu’ils se trouvent au milieu du desert.</p>
+              <p class="answer-infos">Néanmoins le sable de désert, ne s'agrège pas et donc ne peut être utilisé pour la construction. Les promoteurs de Dubaï en ont fait les frais lorsqu'ils ont dus faire apporter du sable d’Australie alors qu’ils se trouvent au milieu du desert.</p>
             </div>
           </div>
           <img class="background" src="../../../assets/images/chapter-2/slide-2.jpg">
         </div>
       </div>
 
-      <div class="slides slide-3">
+      <div class="slides slide-3 slide-data">
         <div class="slide-content-container">
-
+          <p class="slide-title">Les ressources de sable dans le monde</p>
+          <div class="data-container">
+            <div class="data-1">
+              <div class="number">120.OOO.OOO.OOO.OOO.OOO</div>
+              <div class="description">de milliards de tonnes de sable dans le monde</div>
+            </div>
+            <div class="data-2">
+              <img class="graph" src="../../../assets/images/graphs/one-third.png">
+              <div class="description">La sable représente 1/3 du total des sédiments dans le monde</div>
+            </div>
+            <div class="data-3">
+              <img class="graph" src="../../../assets/images/graphs/85.png">
+              <div class="description">Le désert contient 85,5% des reserves de sable exploitables</div>
+            </div>
+          </div>
+          <div class="slide-description">
+            Pour répondre à leurs besoins, les hommes se sont tournés vers d’autres sites que les déserts. En effet, le sable du désert est trop arrondi pour être utilisé en construction, contrairement aux grains issus des carrières, plus granuleux. L’extraction se concentra dans les rivières et les mers.
+          </div>
+          <img class="background" src="../../../assets/images/chapter-2/slide-3.jpg">
         </div>
       </div>
       <div class="slides slide-4">
