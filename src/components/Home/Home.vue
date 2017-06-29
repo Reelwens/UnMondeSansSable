@@ -160,7 +160,17 @@ export default {
         if(lethargy.check(e) !== -1) {
             this.change_the_page()
         }
-    });
+    })
+
+    window.addEventListener('keydown', (e) => {
+
+
+      if(e.keyCode === 39)
+        this.next_slide()
+      else if(e.keyCode === 37)
+        this.previous_slide()
+
+    })
 
   },
 
