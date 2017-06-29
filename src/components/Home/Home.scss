@@ -159,6 +159,7 @@ body
 					{
 						display: inline-block;
 						position: relative;
+						cursor: pointer;
 						
 						.slide-chapter-number, .slide-text-separator, .slide-text-title, .slide-text-subtitle
 						{
@@ -301,6 +302,7 @@ body
 				transform: translateX(-50%);
 				color: white;
 				text-align: center;
+				cursor: default;
 
 				img
 				{
