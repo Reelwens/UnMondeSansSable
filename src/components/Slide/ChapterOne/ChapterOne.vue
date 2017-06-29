@@ -1,8 +1,7 @@
 <style scoped lang="scss" src="./ChapterOne.scss"></style>
-<style scoped src="./hamburger.min.css"></style>
 
 <template>
-  <div class="slide-container">
+  <div class="slide-container" v-bind:class="{ 'video-ready' : video_ready }">
     <header class="header-container">
       <div class="logo-container">
         <a class="logo-link" href="#"><span class="big">2050</span> : Pénurie de sable</a>
@@ -11,6 +10,36 @@
         <button class="sound-button"><img src="../../../assets/images/icons/sound.svg" alt="Sound button"></button>
       </div>
     </header>
+    <img class="image-placeholder" src="../../../assets/images/home/background-1.jpg">
+
+    <div class="menu-container" v-bind:class="[{ 'active' : menu_active}, change_page]">
+      <div class="menu-chapter menu-chapter-1">
+        <div class="chapter-number">I</div>
+        <div class="chapter-title">Souvenirs : Avant le pénurie</div>
+        <img class="background" src="../../../assets/images/home/background-1.jpg">
+      </div>
+      <div @click="change_the_page(1)" class="menu-chapter menu-chapter-2">
+        <div class="chapter-number">II</div>
+        <div class="chapter-title">Inconscience : Une ressource surexploité</div>
+        <img class="background" src="../../../assets/images/home/background-2.jpg">
+      </div>
+      <div @click="change_the_page(2)" class="menu-chapter menu-chapter-3">
+        <div class="chapter-number">III</div>
+        <div class="chapter-title">Folie : Le manque de place</div>
+        <img class="background" src="../../../assets/images/home/background-3.jpg">
+      </div>
+      <div @click="change_the_page(3)" class="menu-chapter menu-chapter-4">
+        <div class="chapter-number">IV</div>
+        <div class="chapter-title">Dérive : Exploitation clandestine</div>
+        <img class="background" src="../../../assets/images/home/background-4.jpg">
+      </div>
+      <div @click="change_the_page(4)" class="menu-chapter menu-chapter-5">
+        <div class="chapter-number">V</div>
+        <div class="chapter-title">Espoir : Perspective d'avenir</div>
+        <img class="background" src="../../../assets/images/home/background-5.jpg">
+      </div>
+    </div>
+
     <div class="slides-container" v-bind:data-slide="slide_index">
 
       <div class="slides slide-1 slide-intro">
@@ -130,8 +159,8 @@
     </div>
     <footer>
       <div class="footer-title">
-        <h2>Chapitre 1</h2>
-        <h2 class="part">Avant la pénurie de l'eau</h2>
+        <h2>Chapitre 2</h2>
+        <h2 class="part">Une ressource surexploitée</h2>
       </div>
       <div class="footer-links">
         <div class="footer-links-container" v-bind:data-slide="slide_index">
@@ -155,22 +184,11 @@
             <div class="footer-link-inner">
             </div>
           </div>
-          <div class="footer-link footer-link-6" @click="change_slide(5)">
-            <div class="footer-link-inner">
-            </div>
-          </div>
-          <div class="footer-link footer-link-7" @click="change_slide(6)">
-            <div class="footer-link-inner">
-            </div>
-          </div>
         </div>
       </div>
-      <div class="footer-menu">
-        <div class="hamburger hamburger--slider" @click="change_menu" v-bind:class="is_active">
-          <div class="hamburger-box">
-            <div class="hamburger-inner hamburger--slider"></div>
-          </div>
-        </div>
+      <div class="footer-menu" v-bind:class="{'menu-up' : menu_active}">
+        <img @click="show_menu" class="burger menu" src="../../../assets/images/icons/burger.svg">
+        <img @click="show_menu" class="burger cross" src="../../../assets/images/icons/cross.svg">
       </div>
     </footer>
   </div>
@@ -193,7 +211,10 @@ export default {
       current_minutes : 0,
       current_seconds : 0,
       current_time : '',
-      video_ready: false
+      video_ready: false,
+      menu_active: false,
+      change_page: '',
+      pages: ['ChapterOne','ChapterTwo','ChapterThree','ChapterFour','ChapterFive']
     }
   },
   created() {
@@ -316,19 +337,38 @@ export default {
 
       }, 100)
     },
+
     move_duration(event) {
       let rect = this.$refs.bar.getBoundingClientRect()
       this.$refs.slide2.currentTime = ((event.clientX - rect.left ) / this.$refs.bar.offsetWidth ) * this.$refs.slide2.duration
       this.seek_animation()
     },
+
     seek_animation() {
       this.ratio = this.$refs.slide2.currentTime/this.$refs.slide2.duration
       this.$refs.seek_bar.style.transform = `scaleX(${this.ratio})`
     },
+
     hide_placeholder () {
       this.video_ready = true
       this.$refs.video.play()
     },
+    
+    show_menu () {
+      if(this.menu_active == false)
+        this.menu_active = true
+      else
+        this.menu_active = false
+    },
+
+    change_the_page (index) {
+      this.change_page = 'page-' + index
+
+      let _this = this
+      window.setTimeout( () => {
+        _this.$router.push(_this.pages[index])
+      }, 600)
+    }
   }
 }
 

@@ -1,5 +1,4 @@
 <style scoped lang="scss" src="./ChapterFour.scss"></style>
-<style scoped src="./hamburger.min.css"></style>
 
 <template>
   <div class="slide-container">
