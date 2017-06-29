@@ -48,7 +48,7 @@ $secondary-font: 'Spectral';
       }
     }
   }
-  
+
   position: relative;
   height: 100%;
   width: 100%;
@@ -92,7 +92,73 @@ $secondary-font: 'Spectral';
       {
         width: 100%;
         height: 100%;
-        background-color: red;
+
+        .video-content{
+
+          video{
+            position: absolute;
+            top: -100px;
+          }
+        }
+
+        .video-controller{
+          position: absolute;
+          bottom: 7%;
+          left: 16%;
+          background-color: #000000;
+          opacity: 0.9;
+          height: 50px;
+          display: flex;
+          width: 70%;
+          align-items: center;
+
+          button{
+            background-color: none;
+            background-color: Transparent;
+            background-repeat:no-repeat;
+            border: none;
+            cursor:pointer;
+            overflow: hidden;
+            outline:none;
+            width: 11%;
+
+            img{
+              width: 18px;
+              height: 18px;
+            }
+          }
+
+          .duration-controller{
+            position: relative;
+            height: 100%;
+            width: 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .duration-controller-bar{
+              background-color: #fefefe;
+              opacity: 0.4;
+              width: 80%;
+              height: 5px;
+            }
+
+            .duration-controller-seek{
+              position: absolute;
+              background-color: #fefefe;
+              opacity: 0.9;
+              width: 80%;
+              height: 5px;
+              transform: scale(0);
+              transform-origin: left;
+              will-change: transform;
+              transition: 0.1s;
+            }
+          }
+          span{
+            color: #FEFEFE;
+          }
+        }
       }
     }
 
@@ -253,9 +319,9 @@ footer{
           background-color: black;
           width: 8px;
           height: 8px;
-          transform: scale(0);
+          transform: scaleX(0);
           border-radius: 50%;
-          margin-left: -1px;
+          margin-left: 1px;
         }
       }
     }
