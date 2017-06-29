@@ -56,9 +56,56 @@
         </div>
       </div>
       
-      <div class="slides slide-4">
+      <div class="slides slide-chiffres">
         <div class="slide-content-container">
-
+          <div class="picture-content">
+           
+            <div class="picture pic1">
+              <div class="hover-box">
+                <div class="circle">
+                  <p>Bâtiments</p>
+                </div>
+              </div>
+              <img src="../../../assets/images/chapter-1/chiffres1.jpg" alt="batiments">
+            </div>
+            
+            <div class="picture pic1">
+              <div class="hover-box">
+                <div class="circle">
+                  <p>Cosmétics</p>
+                </div>
+              </div>
+              <img src="../../../assets/images/chapter-1/chiffres2.jpg" alt="cosmetics">
+            </div>
+            
+            <div class="picture pic1">
+              <div class="hover-box">
+                <div class="circle">
+                  <p>Vin</p>
+                </div>
+              </div>
+              <img src="../../../assets/images/chapter-1/chiffres3.jpg" alt="vin">
+            </div>
+            
+            <div class="picture pic1">
+              <div class="hover-box">
+                <div class="circle">
+                  <p>Transport</p>
+                </div>
+              </div>
+              <img src="../../../assets/images/chapter-1/chiffres4.jpg" alt="transport">
+            </div>
+            
+          </div>
+          
+          <div class="text-content">
+            <div class="main-text">
+              Le sable nous servait pour toutes nos fabrications
+            </div>
+            <div class="text-description">
+              La société toute entière en était dépendante, nous dépensons sans penser qu’un jour cette denrée rare viendrait à manquer.<br>Le pire, c’était le béton armée : on en fabriquait des tonnes sans se soucier du fait qu’il soit constitué à 80% de sable. On en consommait encore plus que le pétrole !
+            </div>
+          </div>
         </div>
       </div>
       <div class="slides slide-5">
