@@ -146,11 +146,11 @@
             <p class="slide-title">« On aurait pourtant dû savoir que l’on en consommerait trop »</p>
             <div class="data-container">
               <div class=" data data-2">
-                <img class="graph" src="../../../assets/images/graphs/one-third.png">
+                <img class="graph" src="../../../assets/images/chapter-1/graph1.png">
                 <div class="description">80% du bétôn armé est constitué de sable</div>
               </div>
               <div class=" data data-3">
-                <img class="graph" src="../../../assets/images/graphs/85.png">
+                <img class="graph" src="../../../assets/images/chapter-1/graph2.png">
                 <div class="description">2/3 des constructions sont en bétôn armé</div>
               </div>
             </div>
