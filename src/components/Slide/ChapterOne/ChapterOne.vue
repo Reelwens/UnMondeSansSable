@@ -83,8 +83,6 @@
             <span>{{ current_time }}/{{ duration }}</span>
           </div>
           <div class="video-title">
-            <h2>UN SPECTACLE UNIQUE</h2>
-            <h3>"Appréciez le monde avant la pénurie, couvert de sable fin"</h3>
           </div>
         </div>
       </div>
@@ -141,19 +139,45 @@
           </div>
         </div>
       </div>
-      <div class="slides slide-5">
+      
+      <div class="slides slide-5 slide-data">
         <div class="slide-content-container">
-
+          <div class="slide-content-container">
+            <p class="slide-title">« On aurait pourtant dû savoir que l’on en consommerait trop »</p>
+            <div class="data-container">
+              <div class=" data data-2">
+                <img class="graph" src="../../../assets/images/graphs/one-third.png">
+                <div class="description">80% du bétôn armé est constitué de sable</div>
+              </div>
+              <div class=" data data-3">
+                <img class="graph" src="../../../assets/images/graphs/85.png">
+                <div class="description">2/3 des constructions sont en bétôn armé</div>
+              </div>
+            </div>
+            <img class="background" src="../../../assets/images/chapter-2/slide-3.jpg">
+          </div>
         </div>
       </div>
-      <div class="slides slide-6">
+      
+      <div v-bind:class="answer" class="slides slide-6 slide-quizz">
         <div class="slide-content-container">
-
-        </div>
-      </div>
-      <div class="slides slide-7">
-        <div class="slide-content-container">
-
+          <div class="quizz-content">
+            <div class="question-infos-container">
+              <p class="quizz-question">Que peut-on produire sans sable ?</p>
+              <div class="answers-container">
+                <div @click="wrong_answer" class="answer-case answer-1">Un ordinateur</div>
+                <div @click="wrong_answer" class="answer-case answer-2">Un panneau solaire</div>
+                <div @click="wrong_answer" class="answer-case answer-3">De la peinture</div>
+                <div @click="right_answer" class="answer-case answer-4">Une guitare</div>
+              </div>
+            </div>
+            <div class="answer-infos-container">
+              <p class="right-answer-text">Bonne réponse</p>
+              <p class="wrong-answer-text">Mauvaise réponse</p>
+              <p class="answer-infos">Le sable servait même dans l’innovation, tout reposait sur cette ressource.</p>
+            </div>
+          </div>
+          <img class="background" src="../../../assets/images/chapter-1/slide-quizz.jpg">
         </div>
       </div>
     </div>
@@ -184,6 +208,10 @@
             <div class="footer-link-inner">
             </div>
           </div>
+          <div class="footer-link footer-link-6" @click="change_slide(5)">
+            <div class="footer-link-inner">
+            </div>
+          </div>
         </div>
       </div>
       <div class="footer-menu" v-bind:class="{'menu-up' : menu_active}">
@@ -205,6 +233,7 @@ export default {
       is_active : '',
       play_icon : '../../../assets/images/icons/play.svg',
       ratio : 0,
+      answer: '',
       duration_minutes : 0,
       duration_seconds : 0,
       duration : '',
@@ -259,7 +288,7 @@ export default {
   methods: {
     slide_down() {
 
-      if(this.slide_index != 6){
+      if(this.slide_index != 5){
         this.slide_index += 1
       }
       if(this.slide_index == 2){
@@ -323,6 +352,13 @@ export default {
     pause() {
       this.play_icon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQxLjk5OSA0MS45OTkiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQxLjk5OSA0MS45OTk7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgo8cGF0aCBkPSJNMzYuMDY4LDIwLjE3NmwtMjktMjBDNi43NjEtMC4wMzUsNi4zNjMtMC4wNTcsNi4wMzUsMC4xMTRDNS43MDYsMC4yODcsNS41LDAuNjI3LDUuNSwwLjk5OXY0MCAgYzAsMC4zNzIsMC4yMDYsMC43MTMsMC41MzUsMC44ODZjMC4xNDYsMC4wNzYsMC4zMDYsMC4xMTQsMC40NjUsMC4xMTRjMC4xOTksMCwwLjM5Ny0wLjA2LDAuNTY4LTAuMTc3bDI5LTIwICBjMC4yNzEtMC4xODcsMC40MzItMC40OTQsMC40MzItMC44MjNTMzYuMzM4LDIwLjM2MywzNi4wNjgsMjAuMTc2eiIgZmlsbD0iI2ZlZmVmZSIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
       this.$refs.slide2.pause()
+    },
+    right_answer () {
+      this.answer = 'right-answer';
+    },
+
+    wrong_answer () {
+      this.answer = 'wrong-answer';
     },
     seek() {
       let _this = this
