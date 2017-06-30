@@ -187,7 +187,7 @@
                 <div @click="wrong_answer" class="answer-case answer-1">Un ordinateur</div>
                 <div @click="wrong_answer" class="answer-case answer-2">Un panneau solaire</div>
                 <div @click="wrong_answer" class="answer-case answer-3">De la peinture</div>
-                <div @click="right_answer" class="answer-case right-answer answer-4">Une guitare</div>
+                <div @click="right_answer" class="answer-case right-answer answer-4">Une brique</div>
               </div>
             </div>
             <div class="answer-infos-container">
