@@ -5,7 +5,7 @@
   <div class="slide-container" v-bind:class="{ 'video-ready' : video_ready }">
     <header class="header-container">
       <div class="logo-container">
-        <a class="logo-link" href="#"><span class="big">2050</span> : Un monde sans sable</a>
+        <a class="logo-link" href="#"><img src="../../../assets/images/logo.png" alt="Logo"></a>
       </div>
       <div class="sound-container">
         <button class="sound-button"><img src="../../../assets/images/icons/sound.svg" alt="Sound button"></button>
@@ -113,7 +113,7 @@
         </div>
       </div>
       
-      <div class="slides slide-5 slide-video">
+      <div class="slides slide-4 slide-video">
         <div class="slide-content-container">
           <div class="video-content">
             <video src="../../../../static/videos/chapter-4-slide-video.mp4" loop poster="posterimage.jpg" ref="slide2" v-on:play="seek"></video>
@@ -131,7 +131,7 @@
         </div>
       </div>
 
-      <div class="slides slide-6 slide-def">
+      <div class="slides slide-5 slide-def">
         <div class="slide-content-container">
           <div class="text-content">
             <div class="main-text">Le vol du sable marocain</div>
@@ -141,6 +141,10 @@
               <img src="../../../assets/images/chapter-4/marocain.jpg" alt="Sand illegal">
           </div>
         </div>
+      </div>
+
+      <div class="slides slide-6 slide-transition">
+        <img class="background" src="../../../assets/images/home/background-5.jpg">
       </div>
       
     </div>
@@ -230,11 +234,11 @@ export default {
       // Scrolling down
       if(lethargy.check(e) === 1 && _this.scrolling === false){
 
-        _this.slide_down()
+        _this.slide_up()
 
       } else if(lethargy.check(e) === -1 && _this.scrolling === false) {
 
-        _this.slide_up()
+        _this.slide_down()
 
       }
     })
@@ -254,7 +258,15 @@ export default {
 
       if(this.slide_index != 5){
           this.slide_index += 1
+      } else if(this.slide_index == 5){
+          this.slide_index += 1
+
+        let _this = this
+        window.setTimeout( () => {
+          _this.$router.push(_this.pages[4])
+        }, 600) 
       }
+
       if(this.slide_index == 4){
         this.play()
       } else {

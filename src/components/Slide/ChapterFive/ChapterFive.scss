@@ -58,10 +58,9 @@ $yellow: #F2C26A;
         color: white;
       }
 
-        .big
+        img
         {
-          font-weight: bold;
-          font-size: 24px;
+          width: 40px;
         }
     }
 
@@ -710,6 +709,29 @@ $yellow: #F2C26A;
           }
         }
       }
+    }
+
+    .slides.slide-6
+    {
+      padding: 50vh 45px 0px 45px;
+      background: black;
+
+      p
+      {
+        font-family: $secondary-font;
+        font-size: 50px;
+        color: $yellow-pale;
+        margin-top: 20px;
+        width: 80vw;
+      }
+
+      span
+      {
+        font-size: 20px;
+        color: white;
+        margin-top: 400px;
+      }
+
     }
 
     .slides.slide-video

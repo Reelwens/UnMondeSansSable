@@ -4,7 +4,7 @@
   <div class="slide-container" v-bind:class="{ 'video-ready' : video_ready }">
     <header class="header-container">
       <div class="logo-container">
-        <a class="logo-link" href="#"><span class="big">2050</span> : Un monde sans sable</a>
+        <a class="logo-link" href="#"><img src="../../../assets/images/logo.png" alt="Logo"></a>
       </div>
       <div class="sound-container">
         <button class="sound-button"><img src="../../../assets/images/icons/sound.svg" alt="Sound button"></button>
@@ -134,12 +134,8 @@
       </div>
       <div class="slides slide-6">
         <div class="slide-content-container">
-
-        </div>
-      </div>
-      <div class="slides slide-7">
-        <div class="slide-content-container">
-
+          <span>Merci pour votre temps</span>
+          <p>Le premier combat est maintenant d'en informer vos proches</p>
         </div>
       </div>
     </div>
@@ -167,6 +163,10 @@
             </div>
           </div>
           <div class="footer-link footer-link-5" @click="change_slide(4)">
+            <div class="footer-link-inner">
+            </div>
+          </div>
+          <div class="footer-link footer-link-6" @click="change_slide(5)">
             <div class="footer-link-inner">
             </div>
           </div>
@@ -254,7 +254,7 @@ export default {
   methods: {
     slide_down() {
 
-      if(this.slide_index != 4){
+      if(this.slide_index != 5){
           this.slide_index += 1
       }
       if(this.slide_index == 4){
