@@ -4,7 +4,7 @@
   <div class="slide-container" v-bind:class="{ 'video-ready' : video_ready }">
     <header class="header-container">
       <div class="logo-container">
-        <a class="logo-link" href="#"><span class="big">2050</span> : Un monde sans sable</a>
+        <a class="logo-link" href="#"><img src="../../../assets/images/logo.png" alt="Logo"></a>
       </div>
       <div class="sound-container">
         <button class="sound-button"><img src="../../../assets/images/icons/sound.svg" alt="Sound button"></button>
@@ -78,7 +78,7 @@
               <p class="quizz-question">Où trouve t-on le plus de sable dans le monde ?</p>
               <div class="answers-container">
                 <div @click="wrong_answer" class="answer-case answer-1">Dans des carrières</div>
-                <div @click="right_answer" class="answer-case answer-2">Dans les déserts</div>
+                <div @click="right_answer" class="answer-case right-answer answer-2">Dans les déserts</div>
                 <div @click="wrong_answer" class="answer-case answer-3">Sur les plages</div>
                 <div @click="wrong_answer" class="answer-case answer-4">Dans les rivières</div>
               </div>
@@ -110,14 +110,26 @@
                 <div class="description">Le désert contient 85,5% des reserves de sable exploitables</div>
               </div>
             </div>
-            <div class="slide-description">
-              Pour répondre à leurs besoins, les hommes se sont tournés vers d’autres sites que les déserts. En effet, le sable du désert est trop arrondi pour être utilisé en construction, contrairement aux grains issus des carrières, plus granuleux. L’extraction se concentra dans les rivières et les mers.
-            </div>
             <img class="background" src="../../../assets/images/chapter-2/slide-3.jpg">
           </div>
         </div>
       </div>
       <div class="slides slide-5 slide-def">
+        <div class="additionnal-content" v-bind:class="{'show' : additionnal}">
+          <div class="additionnal-button" @click="show_additionnal">
+            <img src="../../../assets/images/icons/more.svg" alt="Plus de contenu" @click="show_additionnal">
+            <p>Les formes d'extraction du sable marin</p>
+          </div>
+
+          <div class="additionnal-pop">
+            <img src="../../../assets/images/icons/cross.svg" class="cross" @click="hide_additionnal">
+            <p>
+              C'est sur le plateau continental (zone qui longe les côtes) que sont exploités des granulats marins. Ces derniers correspondent aux sables et graviers (siliceux et calcaires) qui sont extraits des fonds marins. Les granulats marins siliceux sont utilisés pour les travaux de construction comme les matériaux qui sont extraits des carrières terrestres à qui ils offrent une alternative intéressante. Quant aux granulats marins calcaires, ils sont utilisés pour l'amendement des sols et le traitement de l'eau.<br>
+              L'extraction de granulats marins est, en France, principalement réalisée grâce à des navires dédiés à cette activité et appelés des dragues aspiratrices en marche (ou sabliers); il n'y a donc aucune plate-forme permanente d'exploitation en mer. Ces dragues sont généralement équipées pour extraire à environ 30 mètres de profondeur. La capacité de chargement des navires sabliers est comprise entre 1000 et 8500 m3 et il faut en moyenne deux heures de présence sur la zone pour extraire et remplir la cale.<br>
+              Il existe un second type de navire sablier: les dragues à benne preneuse. Elles ont longtemps été majoritaires en France et ne sont utilisées actuellement que sur 2 gisements. Ce système, qui demande un temps très long de chargement, ne convient qu'à proximité des côtes par petites profondeurs (de l'ordre de 10 m) et reste tributaire des conditions météorologiques.
+            </p>
+          </div>
+        </div>
         <div class="slide-content-container">
           <div class="slide-content-container">
             <div class="text-content">
@@ -158,6 +170,10 @@
                 <div class="number">9 plages sur 10</div>
                 <div class="description">en Floride risquent de disparaître.</div>
               </div>
+              <div class=" data data-3" id="data-3">
+                <div class="number">75 à 90%</div>
+                <div class="description">des plages du monde risquent de disparaître.</div>
+              </div>
             </div>
             <div class="slide-description">
               Cette consommation abusive a eu pour première conséquence de faire disparaître nos plages, la première catastrophe écologique alarmante.
@@ -187,14 +203,18 @@
             <div class="text-content">
               <div class="main-text" id="main">Panique en mer, la biodiversité menacée</div>
               <div class="text-description" id="description">En extrayant du sable en mer, différents organismes vivants ont été arrachés à leur milieu. De plus, cette mobilisation du sable entraina un trouble des eaux. La lumière vitale de toutes les espèces marines fut masquée.
-En outre, cela affecta certaines populations, à l’image de l’Indonésie où de nombreuses familles vivaient de la pêche.
-</div>
+              En outre, cela affecta certaines populations, à l’image de l’Indonésie où de nombreuses familles vivaient de la pêche.
+              </div>
             </div>
             <div class="picture-content">
               <img src="../../../assets/images/chapter-2/slide-9.jpg" alt="Sand definition">
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="slides slide-10 slide-transition">
+        <img class="background" src="../../../assets/images/home/background-3.jpg">
       </div>
     </div>
     <footer>
@@ -248,7 +268,8 @@ En outre, cela affecta certaines populations, à l’image de l’Indonésie où
       </div>
     </footer>
     <audio src="../../../../static/sounds/musics/chapter_2.mp3" loop autoplay ref="music"></audio>
-    <audio src="../../../../static/sounds/musics/.mp3" ref="noise"></audio>
+    <audio src="../../../../static/sounds/musics/clic.mp3" ref="noise"></audio>
+    <audio src="../../../../static/sounds/voices/chapter-2/1.mp3" ref="voice"></audio>
   </div>
 </template>
 
@@ -289,7 +310,9 @@ export default {
       current_minutes3 : 0,
       current_seconds3 : 0,
       current_time3 : '',
-      volume : 0.5
+      volume : 0.5,
+      additionnal: false,
+      mute: false
     }
   },
   created() {
@@ -303,6 +326,9 @@ export default {
     let lethargy = new Lethargy()
 
     let _this = this
+
+    this.$refs.music.volume = 0.4;
+    this.$refs.voice.play();
 
     window.addEventListener('mousewheel', (e) => {
       e.preventDefault()
@@ -324,11 +350,49 @@ export default {
 
     slide_down() {
 
+      this.$refs.noise.load()
+      this.$refs.noise.src = '/static/sounds/noises/clic.mp3';
+      if (this.mute == false)
+        this.$refs.noise.volume = 0.2;
+      else
+        this.$refs.noise.volume = 0;
+      this.$refs.noise.play()
+
+      if (this.slide_index == 7)
+      {
+        this.$refs.voice.load()
+        this.$refs.voice.src = '/static/sounds/voices/chapter-2/3.mp3';
+        if (this.mute == false)
+          this.$refs.voice.volume = 1;
+        else
+          this.$refs.voice.volume = 0;
+        this.$refs.voice.play()
+      }
+
       if(this.slide_index != 8){
           this.slide_index += 1
       }
+      else if (this.slide_index == 8)
+      {
+        this.$refs.voice.pause()
+        this.slide_index += 1
+        this.$refs.noise.load()
+        this.$refs.noise.src = '/static/sounds/noises/swipe.mp3';
+        if (this.mute == false)
+          this.$refs.noise.volume = 0.2;
+        else
+          this.$refs.noise.volume = 0;
+        this.$refs.noise.play()
+
+        let _this = this
+        window.setTimeout( () => {
+          _this.$router.push(_this.pages[2])
+        }, 600)        
+      }
+
       if(this.slide_index == 1){
         this.play()
+        this.$refs.voice.pause()
       } else {
         this.pause()
       }
@@ -342,11 +406,35 @@ export default {
       } else {
         this.pause3()
       }
+
+      if(this.slide_index == 3){
+        this.$refs.voice.load()
+        this.$refs.voice.src = '/static/sounds/voices/chapter-2/2.mp3';
+        if (this.mute == false)
+          this.$refs.voice.volume = 1;
+        else
+          this.$refs.voice.volume = 0;
+        this.$refs.voice.play()
+      }
+
+      if(this.slide_index == 4)
+      {
+        this.$refs.voice.pause()
+      }
+
       this.scroll_control()
 
     },
 
     slide_up() {
+
+      this.$refs.noise.load()
+      this.$refs.noise.src = '/static/sounds/noises/clic.mp3';
+      if (this.mute == false)
+        this.$refs.noise.volume = 0.2;
+      else
+        this.$refs.noise.volume = 0;
+      this.$refs.noise.play()
 
       if(this.slide_index != 0){
           this.slide_index -= 1
@@ -366,6 +454,12 @@ export default {
       } else {
         this.pause3()
       }
+
+      if(this.slide_index == 2)
+      {
+        this.$refs.voice.pause()
+      }
+
       this.scroll_control()
 
     },
@@ -396,7 +490,8 @@ export default {
     },
 
     change_slide(index) {
-      this.slide_index = index
+      this.slide_index = index;
+      this.$refs.voice.pause()
     },
 
     hide_placeholder () {
@@ -427,6 +522,7 @@ export default {
         _this.$router.push(_this.pages[index])
       }, 600)
     },
+
     play_pause() {
       if(this.$refs.slide2.paused == false){
         this.pause()
@@ -434,18 +530,21 @@ export default {
         this.play()
       }
     },
+
     play() {
       this.play_icon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUzNS41NzggNTM1LjU3OCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTM1LjU3OCA1MzUuNTc4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8Zz4KCQk8Zz4KCQkJPHBhdGggZD0iTTIzMS42LDUxNi4yNzhjMCwxMC42NTgtOC42NDEsMTkuMy0xOS4zLDE5LjNIMTA2LjE1Yy0xMC42NTksMC0xOS4zLTguNjQxLTE5LjMtMTkuM1YxOS4zICAgICBjMC0xMC42NTksOC42NDEtMTkuMywxOS4zLTE5LjNoMTA2LjE1YzEwLjY1OSwwLDE5LjMsOC42NDEsMTkuMywxOS4zVjUxNi4yNzh6IiBmaWxsPSIjZmVmZWZlIi8+CgkJCTxwYXRoIGQ9Ik00NDguNzI4LDUxNi4yNzhjMCwxMC42NTgtOC42NDEsMTkuMy0xOS4zLDE5LjNoLTEwNi4xNWMtMTAuNjU5LDAtMTkuMy04LjY0MS0xOS4zLTE5LjNWMTkuMyAgICAgYzAtMTAuNjU5LDguNjQxLTE5LjMsMTkuMy0xOS4zaDEwNi4xNWMxMC42NTksMCwxOS4zLDguNjQxLDE5LjMsMTkuM1Y1MTYuMjc4eiIgZmlsbD0iI2ZlZmVmZSIvPgoJCTwvZz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
       this.$refs.slide2.play()
       this.volume = 0
-      this.$refs.music.volume = this.volume
+      this.$refs.music.volume = 0.4
     },
+
     pause() {
       this.play_icon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQxLjk5OSA0MS45OTkiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQxLjk5OSA0MS45OTk7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgo8cGF0aCBkPSJNMzYuMDY4LDIwLjE3NmwtMjktMjBDNi43NjEtMC4wMzUsNi4zNjMtMC4wNTcsNi4wMzUsMC4xMTRDNS43MDYsMC4yODcsNS41LDAuNjI3LDUuNSwwLjk5OXY0MCAgYzAsMC4zNzIsMC4yMDYsMC43MTMsMC41MzUsMC44ODZjMC4xNDYsMC4wNzYsMC4zMDYsMC4xMTQsMC40NjUsMC4xMTRjMC4xOTksMCwwLjM5Ny0wLjA2LDAuNTY4LTAuMTc3bDI5LTIwICBjMC4yNzEtMC4xODcsMC40MzItMC40OTQsMC40MzItMC44MjNTMzYuMzM4LDIwLjM2MywzNi4wNjgsMjAuMTc2eiIgZmlsbD0iI2ZlZmVmZSIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
       this.$refs.slide2.pause()
       this.volume = 0.5
-      this.$refs.music.volume = this.volume
+      this.$refs.music.volume = 0.4
     },
+
     seek() {
       let _this = this
       window.setInterval(() => {
@@ -459,15 +558,18 @@ export default {
 
       }, 100)
     },
+
     move_duration(event) {
       let rect = this.$refs.bar.getBoundingClientRect()
       this.$refs.slide2.currentTime = ((event.clientX - rect.left ) / this.$refs.bar.offsetWidth ) * this.$refs.slide2.duration
       this.seek_animation()
     },
+
     seek_animation() {
       this.ratio = this.$refs.slide2.currentTime/this.$refs.slide2.duration
       this.$refs.seek_bar.style.transform = `scaleX(${this.ratio})`
     },
+
     play_pause2() {
       if(this.$refs.slide3.paused == false){
         this.pause2()
@@ -475,6 +577,7 @@ export default {
         this.play2()
       }
     },
+
     play_pause3() {
       if(this.$refs.slide4.paused == false){
         this.pause3()
@@ -482,30 +585,35 @@ export default {
         this.play3()
       }
     },
+
     play2() {
-      this.volume = 0
+      this.volume = 0.4
       this.$refs.music.volume = this.volume
       this.play_icon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUzNS41NzggNTM1LjU3OCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTM1LjU3OCA1MzUuNTc4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8Zz4KCQk8Zz4KCQkJPHBhdGggZD0iTTIzMS42LDUxNi4yNzhjMCwxMC42NTgtOC42NDEsMTkuMy0xOS4zLDE5LjNIMTA2LjE1Yy0xMC42NTksMC0xOS4zLTguNjQxLTE5LjMtMTkuM1YxOS4zICAgICBjMC0xMC42NTksOC42NDEtMTkuMywxOS4zLTE5LjNoMTA2LjE1YzEwLjY1OSwwLDE5LjMsOC42NDEsMTkuMywxOS4zVjUxNi4yNzh6IiBmaWxsPSIjZmVmZWZlIi8+CgkJCTxwYXRoIGQ9Ik00NDguNzI4LDUxNi4yNzhjMCwxMC42NTgtOC42NDEsMTkuMy0xOS4zLDE5LjNoLTEwNi4xNWMtMTAuNjU5LDAtMTkuMy04LjY0MS0xOS4zLTE5LjNWMTkuMyAgICAgYzAtMTAuNjU5LDguNjQxLTE5LjMsMTkuMy0xOS4zaDEwNi4xNWMxMC42NTksMCwxOS4zLDguNjQxLDE5LjMsMTkuM1Y1MTYuMjc4eiIgZmlsbD0iI2ZlZmVmZSIvPgoJCTwvZz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
       this.$refs.slide3.play()
     },
+
     play3() {
-      this.volume = 0
+      this.volume = 0.4
       this.$refs.music.volume = this.volume
       this.play_icon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUzNS41NzggNTM1LjU3OCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTM1LjU3OCA1MzUuNTc4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8Zz4KCQk8Zz4KCQkJPHBhdGggZD0iTTIzMS42LDUxNi4yNzhjMCwxMC42NTgtOC42NDEsMTkuMy0xOS4zLDE5LjNIMTA2LjE1Yy0xMC42NTksMC0xOS4zLTguNjQxLTE5LjMtMTkuM1YxOS4zICAgICBjMC0xMC42NTksOC42NDEtMTkuMywxOS4zLTE5LjNoMTA2LjE1YzEwLjY1OSwwLDE5LjMsOC42NDEsMTkuMywxOS4zVjUxNi4yNzh6IiBmaWxsPSIjZmVmZWZlIi8+CgkJCTxwYXRoIGQ9Ik00NDguNzI4LDUxNi4yNzhjMCwxMC42NTgtOC42NDEsMTkuMy0xOS4zLDE5LjNoLTEwNi4xNWMtMTAuNjU5LDAtMTkuMy04LjY0MS0xOS4zLTE5LjNWMTkuMyAgICAgYzAtMTAuNjU5LDguNjQxLTE5LjMsMTkuMy0xOS4zaDEwNi4xNWMxMC42NTksMCwxOS4zLDguNjQxLDE5LjMsMTkuM1Y1MTYuMjc4eiIgZmlsbD0iI2ZlZmVmZSIvPgoJCTwvZz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
       this.$refs.slide4.play()
     },
+
     pause2() {
       this.volume = 0.5
       this.$refs.music.volume = this.volume
       this.play_icon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQxLjk5OSA0MS45OTkiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQxLjk5OSA0MS45OTk7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgo8cGF0aCBkPSJNMzYuMDY4LDIwLjE3NmwtMjktMjBDNi43NjEtMC4wMzUsNi4zNjMtMC4wNTcsNi4wMzUsMC4xMTRDNS43MDYsMC4yODcsNS41LDAuNjI3LDUuNSwwLjk5OXY0MCAgYzAsMC4zNzIsMC4yMDYsMC43MTMsMC41MzUsMC44ODZjMC4xNDYsMC4wNzYsMC4zMDYsMC4xMTQsMC40NjUsMC4xMTRjMC4xOTksMCwwLjM5Ny0wLjA2LDAuNTY4LTAuMTc3bDI5LTIwICBjMC4yNzEtMC4xODcsMC40MzItMC40OTQsMC40MzItMC44MjNTMzYuMzM4LDIwLjM2MywzNi4wNjgsMjAuMTc2eiIgZmlsbD0iI2ZlZmVmZSIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
       this.$refs.slide3.pause()
     },
+
     pause3() {
       this.volume = 0.5
       this.$refs.music.volume = this.volume
       this.play_icon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQxLjk5OSA0MS45OTkiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQxLjk5OSA0MS45OTk7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgo8cGF0aCBkPSJNMzYuMDY4LDIwLjE3NmwtMjktMjBDNi43NjEtMC4wMzUsNi4zNjMtMC4wNTcsNi4wMzUsMC4xMTRDNS43MDYsMC4yODcsNS41LDAuNjI3LDUuNSwwLjk5OXY0MCAgYzAsMC4zNzIsMC4yMDYsMC43MTMsMC41MzUsMC44ODZjMC4xNDYsMC4wNzYsMC4zMDYsMC4xMTQsMC40NjUsMC4xMTRjMC4xOTksMCwwLjM5Ny0wLjA2LDAuNTY4LTAuMTc3bDI5LTIwICBjMC4yNzEtMC4xODcsMC40MzItMC40OTQsMC40MzItMC44MjNTMzYuMzM4LDIwLjM2MywzNi4wNjgsMjAuMTc2eiIgZmlsbD0iI2ZlZmVmZSIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
       this.$refs.slide4.pause()
     },
+
     seek2() {
       let _this = this
       window.setInterval(() => {
@@ -519,6 +627,7 @@ export default {
 
       }, 100)
     },
+
     seek3() {
       let _this = this
       window.setInterval(() => {
@@ -532,24 +641,36 @@ export default {
 
       }, 100)
     },
+
     move_duration2(event) {
       let rect = this.$refs.bar2.getBoundingClientRect()
       this.$refs.slide3.currentTime = ((event.clientX - rect.left ) / this.$refs.bar2.offsetWidth ) * this.$refs.slide3.duration
       this.seek_animation2()
     },
+
     move_duration3(event) {
       let rect = this.$refs.bar3.getBoundingClientRect()
       this.$refs.slide4.currentTime = ((event.clientX - rect.left ) / this.$refs.bar3.offsetWidth ) * this.$refs.slide4.duration
       this.seek_animation2()
     },
+
     seek_animation2() {
       this.ratio2 = this.$refs.slide3.currentTime/this.$refs.slide3.duration
       this.$refs.seek_bar2.style.transform = `scaleX(${this.ratio2})`
     },
+
     seek_animation3() {
       this.ratio3 = this.$refs.slide4.currentTime/this.$refs.slide4.duration
       this.$refs.seek_bar3.style.transform = `scaleX(${this.ratio3})`
-    }
+    },
+
+    show_additionnal(){
+      this.additionnal = true
+    },
+
+    hide_additionnal(){
+      this.additionnal = false
+    },
   }
 }
 
