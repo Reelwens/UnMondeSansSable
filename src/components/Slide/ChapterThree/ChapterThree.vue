@@ -4,7 +4,7 @@
   <div class="slide-container" v-bind:class="{ 'video-ready' : video_ready }">
     <header class="header-container">
       <div class="logo-container">
-        <a class="logo-link" href="#"><span class="big">2050</span> : Un monde sans sable</a>
+        <a class="logo-link" href="#"><img src="../../../assets/images/logo.png" alt="Logo"></a>
       </div>
       <div class="sound-container">
         <button class="sound-button"><img src="../../../assets/images/icons/sound.svg" alt="Sound button"></button>
@@ -69,7 +69,34 @@
         </div>
       </div>
 
-      <div class="slides slide-3 slide-video">
+      <div class="slides slide-3 slide-data">
+        <div class="slide-content-container">
+          <div class="slide-content-container">
+            <p class="slide-title">« C’était sûrement la façon la plus irresponsable pour l’environnement de dépenser nos ressources en sable. »</p>
+            <div class="data-container">
+              <div class=" data data-1">
+                <div class="graph"></div>
+                <div class="description">210 millions de m3 de mélange de sable et roches</div>
+              </div>
+              <div class=" data data-2">
+                <div class="graph"></div>
+                <div class="description">5.5 millions de m3 de roches provenant des carrières</div>
+              </div>
+              <div class=" data data-3">
+                <div class="graph"></div>
+                <div class="description">2/3 des constructions sont en bétôn armé</div>
+              </div>
+            </div>
+            <img class="background" src="../../../assets/images/chapter-2/slide-3.jpg">
+          </div>
+        </div>
+      </div>
+
+      <div class="slides slide-4 slide-title">
+        <p>« The World était sans nul doute la quintessence de cette démesure »</p>
+      </div>
+
+      <div class="slides slide-5 slide-video">
         <div class="slide-content-container">
           <div class="video-content">
             <video src="../../../../static/videos/chapter-3-slide-video.mp4" loop poster="posterimage.jpg" ref="slide2" v-on:play="seek"></video>
@@ -82,20 +109,32 @@
             </div>
             <span>{{ current_time }}/{{ duration }}</span>
           </div>
-          <div class="video-title">
-            <h2>L'OLYMPE À ÉCHELLE HUMAINE</h2>
-            <h3>"Une représentation du monde faite de sable, quelle ironie"</h3>
-          </div>
         </div>
       </div>
 
-      <div class="slides slide-4">
+      <div v-bind:class="answer" class="slides slide-5 slide-quizz">
         <div class="slide-content-container">
-
+          <div class="quizz-content">
+            <div class="question-infos-container">
+              <p class="quizz-question">Quelle est la superficie de Singapour ?</p>
+              <div class="answers-container">
+                <div @click="wrong_answer" class="answer-case answer-1">650m²</div>
+                <div @click="right_answer" class="right-answer answer-case answer-2">750m²</div>
+                <div @click="wrong_answer" class="answer-case answer-3">1360m²</div>
+                <div @click="wrong_answer" class="answer-case answer-4">2680m²</div>
+              </div>
+            </div>
+            <div class="answer-infos-container">
+              <p class="right-answer-text">Bonne réponse</p>
+              <p class="wrong-answer-text">Mauvaise réponse</p>
+              <p class="answer-infos">L'expension de la cité-État à travers la conquête du sable fut très mal percue en Orient.</p>
+            </div>
+          </div>
+          <img class="background" src="../../../assets/images/chapter-3/quizz-superficie.jpg">
         </div>
       </div>
 
-      <div class="slides slide-5 slide-chiffres">
+      <div class="slides slide-6 slide-chiffres">
         <div class="slide-content-container">
           <div class="picture-content">
             <img src="../../../assets/images/chapter-3/singapour.jpg" alt="Carte de singapour">
@@ -112,32 +151,8 @@
         </div>
       </div>
 
-      <div v-bind:class="answer" class="slides slide-6 slide-quizz">
-        <div class="slide-content-container">
-          <div class="quizz-content">
-            <div class="question-infos-container">
-              <p class="quizz-question">Quelle est la superficie de Singapour ?</p>
-              <div class="answers-container">
-                <div @click="wrong_answer" class="answer-case answer-1">650m²</div>
-                <div @click="right_answer" class="answer-case answer-2">750m²</div>
-                <div @click="wrong_answer" class="answer-case answer-3">1360m²</div>
-                <div @click="wrong_answer" class="answer-case answer-4">2680m²</div>
-              </div>
-            </div>
-            <div class="answer-infos-container">
-              <p class="right-answer-text">Bonne réponse</p>
-              <p class="wrong-answer-text">Mauvaise réponse</p>
-              <p class="answer-infos">L'expension de la cité-État à travers la conquête du sable fut très mal percue en Orient.</p>
-            </div>
-          </div>
-          <img class="background" src="../../../assets/images/chapter-3/quizz-superficie.jpg">
-        </div>
-      </div>
-
-      <div class="slides slide-7">
-        <div class="slide-content-container">
-
-        </div>
+      <div class="slides slide-7 slide-transition">
+        <img class="background" src="../../../assets/images/home/background-4.jpg">
       </div>
     </div>
     <footer>
@@ -164,6 +179,14 @@
             </div>
           </div>
           <div class="footer-link footer-link-5" @click="change_slide(4)">
+            <div class="footer-link-inner">
+            </div>
+          </div>
+          <div class="footer-link footer-link-6" @click="change_slide(4)">
+            <div class="footer-link-inner">
+            </div>
+          </div>
+          <div class="footer-link footer-link-7" @click="change_slide(4)">
             <div class="footer-link-inner">
             </div>
           </div>
@@ -231,7 +254,6 @@ export default {
 
     window.addEventListener('keydown', (e) => {
 
-
       if(e.keyCode === 39)
         _this.slide_down()
       else if(e.keyCode === 37)
@@ -246,7 +268,17 @@ export default {
           this.slide_index += 1
       }
 
-      if(this.slide_index == 2){
+      if(this.slide_index == 6){
+
+        this.slide_index += 1
+
+        let _this = this
+        window.setTimeout( () => {
+          _this.$router.push(_this.pages[3])
+        }, 600)  
+      }
+
+      if(this.slide_index == 4){
         this.play()
       } else {
         this.pause()
@@ -267,7 +299,7 @@ export default {
           this.slide_index -= 1
       }
 
-      if(this.slide_index == 1){
+      if(this.slide_index == 4){
         this.play()
       } else {
         this.pause()
