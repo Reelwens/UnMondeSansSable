@@ -97,7 +97,7 @@
           <img class="background" src="../../../assets/images/chapter-2/slide-2.jpg">
         </div>
       </div>
-      
+
       <div class="slides slide-4 slide-data">
         <div class="slide-content-container">
           <div class="slide-content-container">
@@ -134,7 +134,6 @@
       </div>
       <div class="slides slide-6">
         <div class="slide-content-container">
-          <span>Merci pour votre temps</span>
           <p>Le premier combat est maintenant d'en informer vos proches</p>
         </div>
       </div>
@@ -209,6 +208,7 @@ export default {
       answer: '',
       pages: ['ChapterOne','ChapterTwo','ChapterThree','ChapterFour','ChapterFive'],
       video_ready: false,
+      audio : ''
     }
   },
 
@@ -241,6 +241,12 @@ export default {
       }
     })
 
+    if(this.slide_index == 0){
+      this.audio.pause()
+      this.audio = new Audio('../../../../static/sounds/voices/chapter-5/1.mp3')
+      this.audio.autoplay = true
+    }
+
     window.addEventListener('keydown', (e) => {
 
       if(e.keyCode === 39)
@@ -267,6 +273,18 @@ export default {
       } else {
         this.pause2()
       }
+
+      if(this.slide_index == 0){
+        this.audio.pause()
+        this.audio = new Audio('../../../../static/sounds/voices/chapter-5/1.mp3')
+        this.audio.autoplay = true
+      } else if(this.slide_index == 3 ){
+        this.audio.pause()
+        this.audio = new Audio('../../../../static/sounds/voices/chapter-5/2.mp3')
+        this.audio.autoplay = true
+      } else {
+        this.audio.pause()
+      }
       this.scroll_control()
 
     },
@@ -285,6 +303,18 @@ export default {
         this.play2()
       } else {
         this.pause2()
+      }
+
+      if(this.slide_index == 0){
+        this.audio.pause()
+        this.audio = new Audio('../../../../static/sounds/voices/chapter-5/1.mp3')
+        this.audio.autoplay = true
+      } else if(this.slide_index == 3 ){
+        this.audio.pause()
+        this.audio = new Audio('../../../../static/sounds/voices/chapter-5/2.mp3')
+        this.audio.autoplay = true
+      } else {
+        this.audio.pause()
       }
       this.scroll_control()
 

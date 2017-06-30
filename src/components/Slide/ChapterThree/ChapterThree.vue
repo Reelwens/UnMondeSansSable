@@ -226,6 +226,7 @@ export default {
       change_page: '',
       pages: ['ChapterOne','ChapterTwo','ChapterThree','ChapterFour','ChapterFive'],
       mute: false,
+      audio : ''
     }
   },
   created() {
@@ -257,6 +258,11 @@ export default {
       }
     })
 
+    if(this.slide_index == 0){
+      this.audio = new Audio('../../../../static/sounds/voices/chapter-3/1.mp3')
+      this.audio.autoplay = true
+    }
+
     window.addEventListener('keydown', (e) => {
 
       if(e.keyCode === 39)
@@ -280,7 +286,16 @@ export default {
         let _this = this
         window.setTimeout( () => {
           _this.$router.push(_this.pages[3])
-        }, 600)  
+        }, 600)
+      }
+      if(this.slide_index == 0){
+        this.audio = new Audio('../../../../static/sounds/voices/chapter-3/1.mp3')
+        this.audio.autoplay = true
+      } else if(this.slide_index == 2 ){
+        this.audio = new Audio('../../../../static/sounds/voices/chapter-3/2.mp3')
+        this.audio.autoplay = true
+      } else {
+        this.audio.pause()
       }
 
       this.$refs.music.volume = 0.2;
@@ -310,6 +325,16 @@ export default {
         this.play()
       } else {
         this.pause()
+      }
+
+      if(this.slide_index == 0){
+        this.audio = new Audio('../../../../static/sounds/voices/chapter-3/1.mp3')
+        this.audio.autoplay = true
+      } else if(this.slide_index == 2 ){
+        this.audio = new Audio('../../../../static/sounds/voices/chapter-3/2.mp3')
+        this.audio.autoplay = true
+      } else {
+        this.audio.pause()
       }
 
       this.scroll_control()

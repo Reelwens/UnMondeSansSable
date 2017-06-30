@@ -312,7 +312,8 @@ export default {
       current_time3 : '',
       volume : 0.5,
       additionnal: false,
-      mute: false
+      mute: false,
+      audio : ''
     }
   },
   created() {
@@ -345,6 +346,21 @@ export default {
 
       }
     })
+
+
+
+    window.addEventListener('keydown', (e) => {
+
+      if(e.keyCode === 39)
+        _this.slide_down()
+      else if(e.keyCode === 37)
+        _this.slide_up()
+
+    })
+
+    if(this.slide_index == 0){
+      this.audio.pause()
+    }
   },
   methods: {
 
@@ -387,7 +403,7 @@ export default {
         let _this = this
         window.setTimeout( () => {
           _this.$router.push(_this.pages[2])
-        }, 600)        
+        }, 600)
       }
 
       if(this.slide_index == 1){

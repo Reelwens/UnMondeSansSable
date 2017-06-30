@@ -1,4 +1,3 @@
-@@ -1,373 +0,0 @@
 <style scoped lang="scss" src="./ChapterFour.scss"></style>
 
 <template>
@@ -20,7 +19,7 @@
         <div class="chapter-title">Souvenirs : Avant le pénurie</div>
         <img class="background" src="../../../assets/images/home/background-1.jpg">
       </div>
-      <div class="menu-chapter menu-chapter-2">
+      <div class="menu-chapter menu-chapter-2" @click="change_the_page(1)">
         <div class="chapter-number">II</div>
         <div class="chapter-title">Inconscience : Une ressource surexploité</div>
         <img class="background" src="../../../assets/images/home/background-2.jpg">
@@ -30,7 +29,7 @@
         <div class="chapter-title">Folie : Le manque de place</div>
         <img class="background" src="../../../assets/images/home/background-3.jpg">
       </div>
-      <div @click="change_the_page(3)" class="menu-chapter menu-chapter-4">
+      <div class="menu-chapter menu-chapter-4">
         <div class="chapter-number">IV</div>
         <div class="chapter-title">Dérive : Exploitation clandestine</div>
         <img class="background" src="../../../assets/images/home/background-4.jpg">
@@ -78,7 +77,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="slides slide-3 slide-def">
         <div class="slide-content-container">
             <div class="text-content">
@@ -90,7 +89,7 @@
             </div>
         </div>
       </div>
-      
+
       <div v-bind:class="answer" class="slides slide-4 slide-quizz">
         <div class="slide-content-container">
           <div class="quizz-content">
@@ -112,7 +111,7 @@
           <img class="background" src="../../../assets/images/chapter-1/slide-quizz.jpg">
         </div>
       </div>
-      
+
       <div class="slides slide-4 slide-video">
         <div class="slide-content-container">
           <div class="video-content">
@@ -146,7 +145,7 @@
       <div class="slides slide-6 slide-transition">
         <img class="background" src="../../../assets/images/home/background-5.jpg">
       </div>
-      
+
     </div>
     <footer>
       <div class="footer-title">
@@ -211,6 +210,7 @@ export default {
       menu_active: false,
       change_page: '',
       pages: ['ChapterOne','ChapterTwo','ChapterThree','ChapterFour','ChapterFive'],
+      audio : ''
     }
   },
 
@@ -243,6 +243,12 @@ export default {
       }
     })
 
+    if(this.slide_index == 0){
+      this.audio.pause()
+      this.audio = new Audio('../../../../static/sounds/voices/chapter-4/1.mp3')
+      this.audio.autoplay = true
+    }
+
     window.addEventListener('keydown', (e) => {
 
 
@@ -264,13 +270,25 @@ export default {
         let _this = this
         window.setTimeout( () => {
           _this.$router.push(_this.pages[4])
-        }, 600) 
+        }, 600)
       }
 
       if(this.slide_index == 4){
         this.play()
       } else {
         this.pause()
+      }
+
+      if(this.slide_index == 0){
+        this.audio.pause()
+        this.audio = new Audio('../../../../static/sounds/voices/chapter-4/1.mp3')
+        this.audio.autoplay = true
+      } else if(this.slide_index == 1 ){
+        this.audio.pause()
+        this.audio = new Audio('../../../../static/sounds/voices/chapter-4/2.mp3')
+        this.audio.autoplay = true
+      } else {
+        this.audio.pause()
       }
       this.scroll_control()
 
@@ -292,6 +310,17 @@ export default {
         this.play()
       } else {
         this.pause()
+      }
+      if(this.slide_index == 0){
+        this.audio.pause()
+        this.audio = new Audio('../../../../static/sounds/voices/chapter-4/1.mp3')
+        this.audio.autoplay = true
+      } else if(this.slide_index == 1 ){
+        this.audio.pause()
+        this.audio = new Audio('../../../../static/sounds/voices/chapter-4/2.mp3')
+        this.audio.autoplay = true
+      } else {
+        this.audio.pause()
       }
       this.scroll_control()
 
