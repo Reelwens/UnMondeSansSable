@@ -197,6 +197,9 @@
         <img @click="show_menu" class="burger cross" src="../../../assets/images/icons/cross.svg">
       </div>
     </footer>
+    <audio src="../../../../static/sounds/musics/chapter_3.mp3" loop autoplay ref="music"></audio>
+    <audio src="../../../../static/sounds/musics/clic.mp3" ref="noise"></audio>
+    <audio src="../../../../static/sounds/voices/chapter-3/1.mp3" ref="voice"></audio>
   </div>
 </template>
 
@@ -222,6 +225,7 @@ export default {
       menu_active : false,
       change_page: '',
       pages: ['ChapterOne','ChapterTwo','ChapterThree','ChapterFour','ChapterFive'],
+      mute: false,
     }
   },
   created() {
@@ -248,6 +252,7 @@ export default {
       } else if(lethargy.check(e) === -1 && _this.scrolling === false) {
 
         _this.slide_down()
+        console.log('hello');
 
       }
     })
@@ -264,11 +269,11 @@ export default {
   methods: {
     slide_down() {
 
+      this.scroll_control()
+
       if(this.slide_index != 6){
           this.slide_index += 1
-      }
-
-      if(this.slide_index == 6){
+      } else if(this.slide_index == 6){
 
         this.slide_index += 1
 
@@ -278,13 +283,15 @@ export default {
         }, 600)  
       }
 
+      this.$refs.music.volume = 0.2;
+      this.$refs.music.volume.play()
+      this.$refs.voice.play()
+
       if(this.slide_index == 4){
         this.play()
       } else {
         this.pause()
       }
-
-      this.scroll_control()
 
     },
 
