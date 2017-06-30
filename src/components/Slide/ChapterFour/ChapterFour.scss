@@ -391,6 +391,9 @@ $yellow: #F2C26A;
           left: 0;
           z-index: -1;
           opacity: 1;
+          min-width: 100%;
+          min-height: 100%;
+          object-fit: cover;
         }
 
         .quizz-content
@@ -636,6 +639,8 @@ $yellow: #F2C26A;
 
     .slides.slide-video
     {
+      background-color: black;
+      
       .slide-content-container
       {
         width: 100%;
@@ -792,35 +797,10 @@ $yellow: #F2C26A;
           img
           {
             width: 385px;
+            height: 385px;
+            object-fit: cover;
           }
         }
-      }
-    }
-
-    .slides.slide-5{
-      .slide-content-container
-      {
-        width: 100%;
-        height: 100%;
-        background-color: lime;
-      }
-    }
-
-    .slides.slide-6{
-      .slide-content-container
-      {
-        width: 100%;
-        height: 100%;
-        background-color: grey;
-      }
-    }
-
-    .slides.slide-7{
-      .slide-content-container
-      {
-        width: 100%;
-        height: 100%;
-        background-color: green;
       }
     }
   }

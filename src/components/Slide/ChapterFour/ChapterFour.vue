@@ -1,10 +1,11 @@
+@@ -1,373 +0,0 @@
 <style scoped lang="scss" src="./ChapterFour.scss"></style>
 
 <template>
   <div class="slide-container" v-bind:class="{ 'video-ready' : video_ready }">
     <header class="header-container">
       <div class="logo-container">
-        <a class="logo-link" href="#"><span class="big">2050</span> : Pénurie de sable</a>
+        <a class="logo-link" href="#"><span class="big">2050</span> : Un monde sans sable</a>
       </div>
       <div class="sound-container">
         <button class="sound-button"><img src="../../../assets/images/icons/sound.svg" alt="Sound button"></button>
@@ -94,7 +95,7 @@
         <div class="slide-content-container">
           <div class="quizz-content">
             <div class="question-infos-container">
-              <p class="quizz-question">Combien de tonnes de sable sont exploités illégalement chaque année en Inde ?</p>
+              <p class="quizz-question">Combien de tonnes de sable sont exploitées illégalement chaque année en Inde ?</p>
               <div class="answers-container">
                 <div @click="wrong_answer" class="answer-case answer-1">1 tonne</div>
                 <div @click="wrong_answer" class="answer-case answer-2">2 mns de tonnes</div>
@@ -105,10 +106,10 @@
             <div class="answer-infos-container">
               <p class="right-answer-text">Bonne réponse</p>
               <p class="wrong-answer-text">Mauvaise réponse</p>
-              <p class="answer-infos">L'importation illégale de sable fait rage et impacte sa régulation.</p>
+              <p class="answer-infos">L'importation illégale de sable fait rage et impacte sa régulation. Chaque année, 2 milliards de tonnes de sable sont exploitées illégalement en Inde.</p>
             </div>
           </div>
-          <img class="background" src="../../../assets/images/chapter-2/slide-2.jpg">
+          <img class="background" src="../../../assets/images/chapter-1/slide-quizz.jpg">
         </div>
       </div>
       
@@ -130,21 +131,23 @@
         </div>
       </div>
 
-      <div class="slides slide-6">
+      <div class="slides slide-6 slide-def">
         <div class="slide-content-container">
-
+          <div class="text-content">
+            <div class="main-text">Le vol du sable marocain</div>
+            <div class="text-description">Au Maroc le tourisme était alors en plein essor, la surexploitation du sable était donc à son paroxysme. On estimait que 40 % du sable utilisé avait été volé sur les plages marocaines.<br>De plus, celui-ci était bien souvent mal traité. Il n’était donc pas débarrassé du sodium présent dans l’eau de mer, ce qui rendait les constructions vulnérables à la corrosion.</div>
+          </div>
+          <div class="picture-content">
+              <img src="../../../assets/images/chapter-4/marocain.jpg" alt="Sand illegal">
+          </div>
         </div>
       </div>
-      <div class="slides slide-7">
-        <div class="slide-content-container">
-
-        </div>
-      </div>
+      
     </div>
     <footer>
       <div class="footer-title">
-        <h2>Chapitre 2</h2>
-        <h2 class="part">Une ressource surexploitée</h2>
+        <h2>Chapitre 4</h2>
+        <h2 class="part">Exploitation clandestine</h2>
       </div>
       <div class="footer-links">
         <div class="footer-links-container" v-bind:data-slide="slide_index">
@@ -165,6 +168,10 @@
             </div>
           </div>
           <div class="footer-link footer-link-5" @click="change_slide(4)">
+            <div class="footer-link-inner">
+            </div>
+          </div>
+          <div class="footer-link footer-link-6" @click="change_slide(5)">
             <div class="footer-link-inner">
             </div>
           </div>
@@ -245,10 +252,10 @@ export default {
   methods: {
     slide_down() {
 
-      if(this.slide_index != 6){
+      if(this.slide_index != 5){
           this.slide_index += 1
       }
-      if(this.slide_index == 2){
+      if(this.slide_index == 4){
         this.play()
       } else {
         this.pause()
@@ -269,7 +276,7 @@ export default {
       if(this.slide_index != 0){
           this.slide_index -= 1
       }
-      if(this.slide_index == 2){
+      if(this.slide_index == 4){
         this.play()
       } else {
         this.pause()
@@ -321,7 +328,6 @@ export default {
       this.play_icon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUzNS41NzggNTM1LjU3OCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTM1LjU3OCA1MzUuNTc4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8Zz4KCQk8Zz4KCQkJPHBhdGggZD0iTTIzMS42LDUxNi4yNzhjMCwxMC42NTgtOC42NDEsMTkuMy0xOS4zLDE5LjNIMTA2LjE1Yy0xMC42NTksMC0xOS4zLTguNjQxLTE5LjMtMTkuM1YxOS4zICAgICBjMC0xMC42NTksOC42NDEtMTkuMywxOS4zLTE5LjNoMTA2LjE1YzEwLjY1OSwwLDE5LjMsOC42NDEsMTkuMywxOS4zVjUxNi4yNzh6IiBmaWxsPSIjZmVmZWZlIi8+CgkJCTxwYXRoIGQ9Ik00NDguNzI4LDUxNi4yNzhjMCwxMC42NTgtOC42NDEsMTkuMy0xOS4zLDE5LjNoLTEwNi4xNWMtMTAuNjU5LDAtMTkuMy04LjY0MS0xOS4zLTE5LjNWMTkuMyAgICAgYzAtMTAuNjU5LDguNjQxLTE5LjMsMTkuMy0xOS4zaDEwNi4xNWMxMC42NTksMCwxOS4zLDguNjQxLDE5LjMsMTkuM1Y1MTYuMjc4eiIgZmlsbD0iI2ZlZmVmZSIvPgoJCTwvZz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
       this.$refs.slide2.play()
     },
-
     pause() {
       this.play_icon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQxLjk5OSA0MS45OTkiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQxLjk5OSA0MS45OTk7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgo8cGF0aCBkPSJNMzYuMDY4LDIwLjE3NmwtMjktMjBDNi43NjEtMC4wMzUsNi4zNjMtMC4wNTcsNi4wMzUsMC4xMTRDNS43MDYsMC4yODcsNS41LDAuNjI3LDUuNSwwLjk5OXY0MCAgYzAsMC4zNzIsMC4yMDYsMC43MTMsMC41MzUsMC44ODZjMC4xNDYsMC4wNzYsMC4zMDYsMC4xMTQsMC40NjUsMC4xMTRjMC4xOTksMCwwLjM5Ny0wLjA2LDAuNTY4LTAuMTc3bDI5LTIwICBjMC4yNzEtMC4xODcsMC40MzItMC40OTQsMC40MzItMC44MjNTMzYuMzM4LDIwLjM2MywzNi4wNjgsMjAuMTc2eiIgZmlsbD0iI2ZlZmVmZSIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
       this.$refs.slide2.pause()
