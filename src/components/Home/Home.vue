@@ -195,6 +195,7 @@ export default {
 
       this.$refs.audioNoise.load()
       this.$refs.audioNoise.src = '/static/sounds/noises/clic.mp3';
+      this.$refs.audioNoise.volume = 0.2;
       this.$refs.audioNoise.play()
     },
 
@@ -205,6 +206,7 @@ export default {
 
         this.$refs.audioNoise.load()
         this.$refs.audioNoise.src = '/static/sounds/noises/swipe.mp3';
+        this.$refs.audioNoise.volume = 0.2;
         this.$refs.audioNoise.play()
 
         let _this = this

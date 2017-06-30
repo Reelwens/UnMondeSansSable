@@ -4,10 +4,11 @@
   <div class="slide-container" v-bind:class="{ 'video-ready' : video_ready }">
     <header class="header-container">
       <div class="logo-container">
-        <a class="logo-link" href="#"><span class="big">2050</span> : Un monde sans sable</a>
+        <a class="logo-link" href="#"><img src="../../../assets/images/logo.png" alt="Logo"></a>
       </div>
-      <div class="sound-container">
-        <button class="sound-button"><img src="../../../assets/images/icons/sound.svg" alt="Sound button"></button>
+      <div class="sound-container" v-bind:class="{'muted' : mute}">
+        <button class="sound-button"><img src="../../../assets/images/icons/sound.svg" alt="Sound button" @click="mute_sound"></button>
+        <button class="mute-button"><img src="../../../assets/images/icons/mute.svg" alt="Mute sound button" @click="mute_sound"></button>
       </div>
     </header>
     <img class="image-placeholder" src="../../../assets/images/home/background-1.jpg">
@@ -61,10 +62,28 @@
             <div class="part-name">Introduction</div>
             <div class="text-separator"></div>
             <div class="main-text">Définition</div>
-            <div class="text-description">Tout solide dont le diamètre est compris entre 0,065 mm et 2mm de diamètre. Étant le matériau le plus dynamique de la planète, il joue un rôle majeur dans l'équilibre de la croûte terrestre.</div>
+            <div class="text-description">Le sable correspond à tout solide dont le diamètre est compris entre 0,065 mm et 2mm de diamètre. Étant le matériau le plus dynamique de la planète, il joue un rôle majeur dans l'équilibre de la croûte terrestre.</div>
           </div>
           <div class="picture-content">
             <img src="../../../assets/images/chapter-1/sand_def.jpg" alt="Sand definition">
+          </div>
+        </div>
+
+        <div class="additionnal-content" v-bind:class="{'show' : additionnal}">
+          <div class="additionnal-button" @click="show_additionnal">
+            <img src="../../../assets/images/icons/more.svg" alt="Plus de contenu" @click="show_additionnal">
+            <p>D'ou vient le sable ?</p>
+          </div>
+
+          <div class="additionnal-pop">
+            <img src="../../../assets/images/icons/cross.svg" class="cross" @click="hide_additionnal">
+            <p>
+              Le sable des plages est ce que l'on appelle une roche sédimentaire détritique. En effet, les plages sont formées par l'accumulation de grains (quartz, oxydes de fer, fragments carbonatés...) issus principalement de l'érosion des roches continentales et de la remobilisation des stocks anciens.<br>
+              Ainsi, le sable commun, constitué de grains de quartz, est formé par l'érosion des roches sous l'effet de l'eau, de la température et du vent puis est transporté par les fleuves ou les vents.<br><br>
+              Parfois, il s'est accumulé il y a très longtemps dans des dunes ou des plages fossiles, lorsque le niveau de la mer était plus bas, durant la glaciation du Quaternaire par exemple. Il a ensuite été remobilisé lors des tempêtes pour venir s'échouer sur les plages.<br>
+              Certains sables, enfin, sont d'origine organique. C'est le cas du sable blanc des atolls, composé de fragments de coraux, de coquillages et de squelettes d'organismes.<br>
+              Le problème est que de plus en plus de sable est extrait, pour la construction notamment, et que de moins en moins de sable arrive dans les mers à cause des barrages et de la lutte contre l'érosion des berges et des dunes. Cette carence en sable fait régresser les plages et participe à leur recul et à leur disparition.<br>
+            </p>
           </div>
         </div>
       </div>
@@ -168,7 +187,7 @@
                 <div @click="wrong_answer" class="answer-case answer-1">Un ordinateur</div>
                 <div @click="wrong_answer" class="answer-case answer-2">Un panneau solaire</div>
                 <div @click="wrong_answer" class="answer-case answer-3">De la peinture</div>
-                <div @click="right_answer" class="answer-case answer-4">Une guitare</div>
+                <div @click="right_answer" class="answer-case right-answer answer-4">Une guitare</div>
               </div>
             </div>
             <div class="answer-infos-container">
@@ -179,6 +198,10 @@
           </div>
           <img class="background" src="../../../assets/images/chapter-1/slide-quizz.jpg">
         </div>
+      </div>
+
+      <div class="slides slide-7 slide-transition">
+        <img class="background" src="../../../assets/images/home/background-2.jpg">
       </div>
     </div>
     <footer>
@@ -219,7 +242,9 @@
         <img @click="show_menu" class="burger cross" src="../../../assets/images/icons/cross.svg">
       </div>
     </footer>
-    <audio src="../../../../static/sounds/musics/chapter_1.mp3" autoplay ref="music"></audio>
+    <audio src="../../../../static/sounds/musics/chapter_1.mp3" loop autoplay ref="music"></audio>
+    <audio src="../../../../static/sounds/musics/clic.mp3" ref="noise"></audio>
+    <audio src="../../../../static/sounds/voices/chapter-1/1.mp3" ref="voice"></audio>
   </div>
 </template>
 
@@ -245,7 +270,8 @@ export default {
       menu_active: false,
       change_page: '',
       pages: ['ChapterOne','ChapterTwo','ChapterThree','ChapterFour','ChapterFive'],
-      volume : 0.5
+      mute: false,
+      additionnal: false
     }
   },
   created() {
@@ -267,17 +293,19 @@ export default {
       // Scrolling down
       if(lethargy.check(e) === 1 && _this.scrolling === false){
 
-        _this.slide_down()
+        _this.slide_up()
 
       } else if(lethargy.check(e) === -1 && _this.scrolling === false) {
 
-        _this.slide_up()
+        _this.slide_down()
 
       }
     })
 
-    window.addEventListener('keydown', (e) => {
+    this.$refs.music.volume = 0.2;
+    this.$refs.voice.play();
 
+    window.addEventListener('keydown', (e) => {
 
       if(e.keyCode === 39)
         _this.slide_down()
@@ -292,26 +320,98 @@ export default {
 
       if(this.slide_index != 5){
         this.slide_index += 1
+        this.$refs.noise.load()
+        this.$refs.noise.src = '/static/sounds/noises/clic.mp3';
+        if (this.mute == false)
+          this.$refs.noise.volume = 0.2;
+        else
+          this.$refs.noise.volume = 0;
+        this.$refs.noise.play()
       }
+      else if (this.slide_index == 5)
+      {
+        this.$refs.voice.pause()
+        this.slide_index += 1
+        this.$refs.noise.load()
+        this.$refs.noise.src = '/static/sounds/noises/swipe.mp3';
+        if (this.mute == false)
+          this.$refs.noise.volume = 0.2;
+        else
+          this.$refs.noise.volume = 0;
+        this.$refs.noise.play()
+
+        let _this = this
+        window.setTimeout( () => {
+          _this.$router.push(_this.pages[1])
+        }, 600)        
+      }
+
+      if(this.slide_index == 1){
+        this.$refs.voice.pause()
+      }
+
+      if(this.slide_index == 3){
+        this.$refs.voice.pause()
+      }
+
+      if(this.slide_index == 4){
+        this.$refs.voice.load()
+        this.$refs.voice.src = '/static/sounds/voices/chapter-1/3.mp3'
+        if (this.mute == false)
+          this.$refs.voice.volume = 1;
+        else
+          this.$refs.voice.volume = 0;
+        this.$refs.voice.play()
+      }
+
       if(this.slide_index == 2){
         this.play()
+        this.$refs.voice.load()
+        this.$refs.voice.src = '/static/sounds/voices/chapter-1/2.mp3'
+        if (this.mute == false)
+          this.$refs.voice.volume = 1;
+        else
+          this.$refs.voice.volume = 0;
+        this.$refs.voice.play()
       } else {
         this.pause()
       }
       this.scroll_control()
 
     },
+
     slide_up() {
 
       if(this.slide_index != 0){
           this.slide_index -= 1
+          this.$refs.noise.load()
+          this.$refs.noise.src = '/static/sounds/noises/clic.mp3';
+          if (this.mute == false)
+            this.$refs.noise.volume = 0.2;
+          else
+            this.$refs.noise.volume = 0;
+          this.$refs.noise.play()
       }
       if(this.slide_index == 2){
         this.play()
       } else {
         this.pause()
       }
+      if(this.slide_index == 3){
+        this.$refs.voice.pause()
+      }
+      if(this.slide_index == 1){
+        this.$refs.voice.pause()
+      }
       this.scroll_control()
+
+      this.$refs.noise.load()
+      this.$refs.noise.src = '/static/sounds/noises/clic.mp3';
+      if (this.mute == false)
+        this.$refs.noise.volume = 0.2;
+      else
+        this.$refs.noise.volume = 0;
+      this.$refs.noise.play()
 
     },
     scroll_control() {
@@ -332,6 +432,10 @@ export default {
     },
     change_slide(index) {
       this.slide_index = index
+      if (index == 1 || index == 3 || index == 5)
+      {
+        this.$refs.voice.pause()
+      }
     },
     change_menu() {
       if(this.is_active === ''){
@@ -351,13 +455,11 @@ export default {
       this.play_icon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUzNS41NzggNTM1LjU3OCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTM1LjU3OCA1MzUuNTc4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8Zz4KCQk8Zz4KCQkJPHBhdGggZD0iTTIzMS42LDUxNi4yNzhjMCwxMC42NTgtOC42NDEsMTkuMy0xOS4zLDE5LjNIMTA2LjE1Yy0xMC42NTksMC0xOS4zLTguNjQxLTE5LjMtMTkuM1YxOS4zICAgICBjMC0xMC42NTksOC42NDEtMTkuMywxOS4zLTE5LjNoMTA2LjE1YzEwLjY1OSwwLDE5LjMsOC42NDEsMTkuMywxOS4zVjUxNi4yNzh6IiBmaWxsPSIjZmVmZWZlIi8+CgkJCTxwYXRoIGQ9Ik00NDguNzI4LDUxNi4yNzhjMCwxMC42NTgtOC42NDEsMTkuMy0xOS4zLDE5LjNoLTEwNi4xNWMtMTAuNjU5LDAtMTkuMy04LjY0MS0xOS4zLTE5LjNWMTkuMyAgICAgYzAtMTAuNjU5LDguNjQxLTE5LjMsMTkuMy0xOS4zaDEwNi4xNWMxMC42NTksMCwxOS4zLDguNjQxLDE5LjMsMTkuM1Y1MTYuMjc4eiIgZmlsbD0iI2ZlZmVmZSIvPgoJCTwvZz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
       this.$refs.slide2.play()
       this.volume = 0
-      this.$refs.music.volume = this.volume
     },
     pause() {
       this.play_icon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQxLjk5OSA0MS45OTkiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQxLjk5OSA0MS45OTk7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgo8cGF0aCBkPSJNMzYuMDY4LDIwLjE3NmwtMjktMjBDNi43NjEtMC4wMzUsNi4zNjMtMC4wNTcsNi4wMzUsMC4xMTRDNS43MDYsMC4yODcsNS41LDAuNjI3LDUuNSwwLjk5OXY0MCAgYzAsMC4zNzIsMC4yMDYsMC43MTMsMC41MzUsMC44ODZjMC4xNDYsMC4wNzYsMC4zMDYsMC4xMTQsMC40NjUsMC4xMTRjMC4xOTksMCwwLjM5Ny0wLjA2LDAuNTY4LTAuMTc3bDI5LTIwICBjMC4yNzEtMC4xODcsMC40MzItMC40OTQsMC40MzItMC44MjNTMzYuMzM4LDIwLjM2MywzNi4wNjgsMjAuMTc2eiIgZmlsbD0iI2ZlZmVmZSIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
       this.$refs.slide2.pause()
       this.volume = 0.5
-      this.$refs.music.volume = this.volume
     },
     right_answer () {
       this.answer = 'right-answer';
@@ -410,6 +512,33 @@ export default {
       window.setTimeout( () => {
         _this.$router.push(_this.pages[index])
       }, 600)
+    },
+
+    show_additionnal(){
+      this.additionnal = true
+    },
+
+    hide_additionnal(){
+      this.additionnal = false
+    },
+
+    mute_sound () {
+      if (this.mute == false)
+      {
+        this.mute = true
+        this.$refs.noise.volume = 0
+        this.$refs.slide2.volume = 0;
+        this.$refs.music.volume = 0;
+        this.$refs.voice.volume = 0;
+      }
+      else
+      {
+        this.mute = false
+        this.$refs.noise.volume = 0.2
+        this.$refs.slide2.volume = 0;
+        this.$refs.music.volume = 0.2;
+        this.$refs.voice.volume = 1;
+      }
     }
   }
 }

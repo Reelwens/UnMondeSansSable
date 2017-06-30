@@ -207,7 +207,7 @@ $yellow: #F2C26A;
     right: 0;
     box-sizing: border-box;
     padding: 30px 45px;
-    z-index: 10;
+    z-index: 1000;
 
     .logo-container
     {
@@ -221,10 +221,9 @@ $yellow: #F2C26A;
         color: white;
       }
 
-        .big
+        img
         {
-          font-weight: bold;
-          font-size: 24px;
+          width: 40px;
         }
     }
 
@@ -240,6 +239,28 @@ $yellow: #F2C26A;
         background: none;
         cursor: pointer;
         outline: none;
+      }
+
+      .mute-button
+      {
+        padding: 0px 0px 20px 20px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        outline: none;
+        position: absolute;
+        top: 30px;
+        opacity: 0;
+        transition: opacity 0.15s ease-in-out;
+        will-change: opacity;
+      }
+    }
+
+    .sound-container.muted
+    {
+      .mute-button
+      {
+        opacity: 1;
       }
     }
   }
@@ -372,6 +393,71 @@ $yellow: #F2C26A;
             }
           }
         }
+      }
+    }
+
+    .slides
+    {
+      .additionnal-button
+      {
+        background: white;
+        padding: 10px 15px;
+        position: absolute;
+        top: 150px;
+        left: 100%;
+        cursor: pointer;
+        transform: translateX(-55px);
+        width: auto;
+        transition: all 0.3s ease-in-out;
+        z-index: 1000;
+        width: 200px;
+        
+        img
+        {
+          width: 25px;
+          vertical-align: middle;
+        }
+
+        p
+        {
+          display: inline-block;
+          margin-left: 20px;
+          vertical-align: middle;
+        }
+      }
+
+      .additionnal-button:hover
+      {
+        transform: translateX(-100%);
+      }
+
+      .additionnal-pop
+      {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 500px;
+        background: white;
+        z-index: 2000;
+        box-sizing: border-box;
+        padding: 30px 30px;
+        opacity: 0;
+        transform: translateX(500px);
+        transition: all 0.3s ease-in-out;
+        will-change: transform;
+
+        img.cross
+        {
+          cursor: pointer;
+          margin-top: 100px;
+        }
+      }
+
+      .show .additionnal-pop
+      {
+        opacity: 1;
+        transform: translateX(0);
       }
     }
 
@@ -878,6 +964,11 @@ $yellow: #F2C26A;
 
         transform: translateY(0px);
 
+        .right-answer
+        {
+          background: #75e591;
+        }
+
         .answer-infos-container
         {
           opacity: 1;
@@ -895,6 +986,11 @@ $yellow: #F2C26A;
       .slide-content-container .quizz-content
       {
         transform: translateY(0px);
+
+        .right-answer
+        {
+          background: #75e591;
+        }
 
         .answer-infos-container
         {
@@ -999,6 +1095,7 @@ footer{
     width: 70%;
     align-items: center;
     justify-content: center;
+    margin-left: 50px;
 
     .footer-links-container{
       display: flex;
@@ -1051,7 +1148,7 @@ footer{
     .cross{opacity: 0;}
   }
 
-  .footer-menu.menu-up.active
+  .footer-menu.menu-up
   {
     .menu{opacity: 0;}
     .cross{opacity: 1;}

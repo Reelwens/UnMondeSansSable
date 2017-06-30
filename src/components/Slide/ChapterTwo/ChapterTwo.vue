@@ -247,7 +247,8 @@ En outre, cela affecta certaines populations, à l’image de l’Indonésie où
         <img @click="show_menu" class="burger cross" src="../../../assets/images/icons/cross.svg">
       </div>
     </footer>
-    <audio src="../../../../static/sounds/musics/chapter_2.mp3" autoplay ref="music"></audio>
+    <audio src="../../../../static/sounds/musics/chapter_2.mp3" loop autoplay ref="music"></audio>
+    <audio src="../../../../static/sounds/musics/.mp3" ref="noise"></audio>
   </div>
 </template>
 
