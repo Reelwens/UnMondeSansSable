@@ -50,7 +50,7 @@
             <div class="chapter-number">I</div>
             <div class="chapter-title">Souvenirs - Avant la pénurie</div>
             <div class="separator"></div>
-            <p class="text-introduction">À votre époque, le sable était synonyme de bien être, de finesse et de beauté. Vous en gardez surement des souvenirs de vos vacances, sur les plages de sable fin.<br><br>Ce que vous saviez probablement moins, c’est que la société en consommait des milliards de tonnes chaque année sans se soucier des réserves qu’il restait.</p>
+            <p class="text-introduction">À votre époque, le sable était synonyme de bien-être, de finesse et de beauté. Vous en gardez sûrement des souvenirs de vos vacances, sur les plages de sable fin.<br><br>Ce que vous saviez probablement moins, c’est que la société en consommait des milliards de tonnes chaque année sans se soucier des réserves qu’il restait.</p>
           </div>
           <video ref="video" @canplay="hide_placeholder" src="../../../../static/videos/chapter-1.mp4" autoplay loop poster="../../../assets/images/home/background-1.jpg"></video>
         </div>
@@ -153,7 +153,7 @@
               Le sable nous servait pour toutes nos fabrications
             </div>
             <div class="text-description">
-              La société toute entière en était dépendante, nous dépensons sans penser qu’un jour cette denrée rare viendrait à manquer.<br>Le pire, c’était le béton armée : on en fabriquait des tonnes sans se soucier du fait qu’il soit constitué à 80% de sable. On en consommait encore plus que le pétrole !
+              La société toute entière en était dépendante, nous dépensions sans penser qu’un jour cette denrée rare viendrait à manquer.<br>Le pire, c’était le béton armée : on en fabriquait des tonnes sans se soucier du fait qu’il soit constitué à 80% de sable. On en consommait encore plus que le pétrole !
             </div>
           </div>
         </div>
@@ -166,11 +166,11 @@
             <div class="data-container">
               <div class=" data data-2">
                 <img class="graph" src="../../../assets/images/chapter-1/graph1.png">
-                <div class="description">80% du bétôn armé est constitué de sable</div>
+                <div class="description">80% du béton armé est constitué de sable</div>
               </div>
               <div class=" data data-3">
                 <img class="graph" src="../../../assets/images/chapter-1/graph2.png">
-                <div class="description">2/3 des constructions sont en bétôn armé</div>
+                <div class="description">2/3 des constructions sont en béton armé</div>
               </div>
             </div>
             <img class="background" src="../../../assets/images/chapter-2/slide-3.jpg">
@@ -343,7 +343,7 @@ export default {
         let _this = this
         window.setTimeout( () => {
           _this.$router.push(_this.pages[1])
-        }, 600)        
+        }, 600)
       }
 
       if(this.slide_index == 1){

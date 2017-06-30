@@ -185,6 +185,7 @@
         <img @click="show_menu" class="burger cross" src="../../../assets/images/icons/cross.svg">
       </div>
     </footer>
+    <audio src="../../../../static/sounds/musics/chapter_4.mp3" loop autoplay ref="music"></audio>
   </div>
 </template>
 
@@ -225,6 +226,8 @@ export default {
 
     let lethargy = new Lethargy()
 
+    this.$refs.music.volume = 0.3
+
     let _this = this
 
     window.addEventListener('mousewheel', (e) => {
@@ -244,7 +247,8 @@ export default {
     })
 
     if(this.slide_index == 0){
-      this.audio.pause()
+      if(this.audio != '')
+        this.audio.pause()
       this.audio = new Audio('../../../../static/sounds/voices/chapter-4/1.mp3')
       this.audio.autoplay = true
     }

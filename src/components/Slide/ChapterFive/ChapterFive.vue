@@ -90,7 +90,7 @@
               <p class="right-answer-text">Bonne réponse</p>
               <p class="wrong-answer-text">Mauvaise réponse</p>
               <p class="answer-infos">
-                Toutes ces réponses sont vrais, il existe de nombreuses solutions pour régler le problème.
+                Toutes ces réponses sont vraies, il existe de nombreuses solutions pour régler le problème.
               </p>
             </div>
           </div>
@@ -134,7 +134,7 @@
       </div>
       <div class="slides slide-6">
         <div class="slide-content-container">
-          <p>Le premier combat est maintenant d'en informer vos proches</p>
+          <p>Le combat est maintenant d'en informer vos proches</p>
         </div>
       </div>
     </div>
@@ -176,6 +176,7 @@
         <img @click="show_menu" class="burger cross" src="../../../assets/images/icons/cross.svg">
       </div>
     </footer>
+      <audio src="../../../../static/sounds/musics/chapter_5.mp3" loop autoplay ref="music"></audio>
   </div>
 </template>
 
@@ -223,6 +224,8 @@ export default {
 
     let lethargy = new Lethargy()
 
+    this.$refs.music.volume = 0.3
+
     let _this = this
 
     window.addEventListener('mousewheel', (e) => {
@@ -242,7 +245,8 @@ export default {
     })
 
     if(this.slide_index == 0){
-      this.audio.pause()
+      if(this.audio != '')
+        this.audio.pause()
       this.audio = new Audio('../../../../static/sounds/voices/chapter-5/1.mp3')
       this.audio.autoplay = true
     }
