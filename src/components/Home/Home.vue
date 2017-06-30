@@ -17,7 +17,7 @@
 
     <header class="header-container">
       <div class="logo-container">
-        <a class="logo-link" href="#"><span class="big">2050</span> : Un monde sans sable</a>
+        <a class="logo-link" href="#"><img src="../../assets/images/logo.png" alt="Logo"></a>
       </div>
       <div class="sound-container">
         <button class="sound-button"><img src="../../assets/images/icons/sound.svg" alt="Sound button"></button>

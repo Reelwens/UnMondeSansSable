@@ -88,23 +88,22 @@ body
 			z-index: 10;
 			
 			.logo-container
-			{
-				display: inline-block;
-				
-				.logo-link
-				{
-					text-decoration: none;
-					color: black;
-					font-family: $main-font;
-					color: white;
-				}
-					
-					.big
-					{
-						font-weight: bold;
-						font-size: 24px;
-					}
-			}
+		    {
+		      display: inline-block;
+
+		      .logo-link
+		      {
+		        text-decoration: none;
+		        color: black;
+		        font-family: $main-font;
+		        color: white;
+		      }
+
+		        img
+		        {
+		          width: 40px;
+		        }
+		    }
 			
 			.sound-container
 			{
