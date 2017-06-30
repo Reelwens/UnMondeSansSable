@@ -80,11 +80,11 @@
               </div>
               <div class=" data data-2">
                 <div class="graph"></div>
-                <div class="description">5.5 millions de m3 de roches provenant des carrières</div>
+                <div class="description">93 millions de m3 de sable provenant des fonds marins à 11 km des cotes</div>
               </div>
               <div class=" data data-3">
                 <div class="graph"></div>
-                <div class="description">2/3 des constructions sont en bétôn armé</div>
+                <div class="description">5.5 millions de m3 de roches provenant des carrières</div>
               </div>
             </div>
             <img class="background" src="../../../assets/images/chapter-2/slide-3.jpg">
@@ -299,8 +299,7 @@ export default {
       }
 
       this.$refs.music.volume = 0.2;
-      this.$refs.music.volume.play()
-      this.$refs.voice.play()
+      this.$refs.music.play()
 
       if(this.slide_index == 4){
         this.play()
